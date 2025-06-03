@@ -55,28 +55,28 @@ class Campfire {
     }
 
     createFireParticles() {
-        const particleGeometry = new THREE.SphereGeometry(0.07, 6, 6);
+        const particleGeometry = new THREE.SphereGeometry(0.1, 6, 6);
         
         for (let i = 0; i < 20; i++) {
             const particleMaterial = new THREE.MeshBasicMaterial({
-                color: new THREE.Color().setHSL(0.1 - Math.random() * 0.1, 1, 0.5 + Math.random() * 0.3),
+                color: new THREE.Color().setHSL(0.1 - Math.random() * 0.1, 1, 0.6 + Math.random() * 0.4),
                 transparent: true,
-                opacity: 0.8
+                opacity: 0.9
             });
             
             const particle = new THREE.Mesh(particleGeometry, particleMaterial);
             particle.position.set(
-                (Math.random() - 0.5) * 0.4,
+                (Math.random() - 0.5) * 0.5,
                 0.4,
-                (Math.random() - 0.5) * 0.4
+                (Math.random() - 0.5) * 0.5
             );
             
             particle.userData = {
                 isFireParticle: true,
                 velocity: new THREE.Vector3(
-                    (Math.random() - 0.5) * 0.015,
-                    0.015 + Math.random() * 0.02,
-                    (Math.random() - 0.5) * 0.015
+                    (Math.random() - 0.5) * 0.02,
+                    0.02 + Math.random() * 0.03,
+                    (Math.random() - 0.5) * 0.02
                 ),
                 life: Math.random() * 2 + 1
             };

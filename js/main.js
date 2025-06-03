@@ -193,7 +193,7 @@ class CampfirePortfolio {
             child => child.type === 'PointLight' && child.color.getHex() === 0xff6600
         );
         if (fireLight) {
-            fireLight.intensity = 1.8 + Math.sin(time * 10) * 0.2 + Math.random() * 0.1;
+            fireLight.intensity = 2.2 + Math.sin(time * 12) * 0.3 + Math.random() * 0.2;
         }
     }
 
