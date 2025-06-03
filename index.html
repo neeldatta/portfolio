@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Forest Clearing</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+    <div id="container">
+        <div id="loading">
+            <div class="fire-loader"></div>
+            Lighting the campfire...
+        </div>
+        
+        <div id="instructions" style="display: none;">
+            Look around with your mouse • Click on the desk to learn more.
+        </div>
+    </div>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="UI.closeModal()">&times;</button>
+            <div id="modalBody">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Our Modules -->
+    <script src="js/scene.js"></script>
+    <script src="js/objects/campfire.js"></script>
+    <script src="js/objects/desk.js"></script>
+    <script src="js/objects/tent.js"></script>
+    <script src="js/objects/wildlife.js"></script>
+    <script src="js/objects/floatingText.js"></script>
+    <script src="js/objects/environment.js"></script>
+    <script src="js/controls/navigation.js"></script>
+    <script src="js/controls/interactions.js"></script>
+    <script src="js/ui/portfolio-display.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
