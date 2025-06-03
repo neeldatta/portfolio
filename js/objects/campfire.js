@@ -3,6 +3,9 @@ class Campfire {
     constructor(scene) {
         this.scene = scene;
         this.fireParticles = [];
+        this.smokeParticles = [];
+        this.isLit = false;
+        this.position = new THREE.Vector3(0, 0, 10.5); // Moved forward by 3.5 units
     }
 
     create() {

@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
-    <div id="container">
-        <div id="loading">
-            <div class="fire-loader"></div>
-            Lighting the campfire...
-        </div>
-        
+    <div id="music-toggle">
+        <button id="music-button">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="audio/background.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="loading-screen">
+        <div class="fire-loader"></div>
+        <div class="loading-text">Lighting the campfire...</div>
+    </div>
+
+    <div id="container" style="display: none;">
         <div id="instructions" style="display: none;">
-            Look around with your mouse • Click on the desk to learn more.
+            Look around with your mouse • Click on the desk to explore
         </div>
     </div>
 
@@ -38,6 +48,7 @@
     <script src="js/objects/desk.js"></script>
     <script src="js/objects/tent.js"></script>
     <script src="js/objects/wildlife.js"></script>
+    <script src="js/objects/trees.js"></script>
     <script src="js/objects/floatingText.js"></script>
     <script src="js/objects/environment.js"></script>
     <script src="js/controls/navigation.js"></script>

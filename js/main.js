@@ -8,6 +8,8 @@ class CampfirePortfolio {
         this.navigationController = null;
         this.interactionController = null;
         this.isLoaded = false;
+        this.music = null;
+        this.isMusicPlaying = false;
     }
 
     async init() {
@@ -19,6 +21,9 @@ class CampfirePortfolio {
             this.scene = this.sceneManager.scene;
             this.camera = this.sceneManager.camera;
             this.renderer = this.sceneManager.renderer;
+
+            // Initialize music
+            this.initMusic();
 
             // Create environment
             const environment = new Environment(this.scene);
@@ -52,6 +57,26 @@ class CampfirePortfolio {
         } catch (error) {
             console.error('Error initializing portfolio:', error);
         }
+    }
+
+    initMusic() {
+        this.music = document.getElementById('background-music');
+        const musicButton = document.getElementById('music-button');
+
+        // Set initial state
+        musicButton.classList.add('playing');
+        this.isMusicPlaying = true;
+
+        musicButton.addEventListener('click', () => {
+            if (this.isMusicPlaying) {
+                this.music.pause();
+                musicButton.classList.remove('playing');
+            } else {
+                this.music.play();
+                musicButton.classList.add('playing');
+            }
+            this.isMusicPlaying = !this.isMusicPlaying;
+        });
     }
 
     animate() {
@@ -174,8 +199,23 @@ class CampfirePortfolio {
 
     hideLoading() {
         setTimeout(() => {
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('instructions').style.display = 'block';
+            const loadingScreen = document.getElementById('loading-screen');
+            const container = document.getElementById('container');
+            
+            // Fade out loading screen
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 1s ease-out';
+            
+            // Show container
+            container.style.display = 'block';
+            
+            // Start playing music
+            this.music.play();
+            
+            // Remove loading screen after fade
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 1000);
         }, 2000);
     }
 

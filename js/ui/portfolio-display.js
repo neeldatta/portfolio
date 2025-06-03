@@ -32,8 +32,8 @@ class UI {
                     <h2>Featured Projects</h2>
                     
                     <div class="project">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack web application built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and real-time inventory management.</p>
+                        <h3>Full-Stack Real Estate Investment Platform</h3>
+                        <p>A full-stack web application built with Next.js, Tailwind CSS, and Supabase. Features include user authentication, payment processing, and real-time inventory management.</p>
                         <a href="#" class="project-link">View Project</a>
                         <a href="#" class="project-link" style="margin-left: 10px;">GitHub</a>
                     </div>

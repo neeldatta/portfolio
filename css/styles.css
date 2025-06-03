@@ -4,42 +4,69 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Honoria';
+    src: url('../fonts/Honoria.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Georgia', serif;
-    background: #0a0a0a;
+    margin: 0;
     overflow: hidden;
-    cursor: crosshair;
+    background-color: #000;
 }
 
 #container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-#loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #8B4513;
-    font-size: 18px;
-    z-index: 200;
-    text-align: center;
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: #fff;
+    font-family: 'Honoria', serif;
+}
+
+.loading-text {
+    margin-top: 20px;
+    font-size: 1.8em;
 }
 
 .fire-loader {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto 20px;
-    background: radial-gradient(circle, #ff6b00 0%, #ff4500 30%, #8B0000 70%);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: flicker 0.5s ease-in-out infinite alternate;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ff6600 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
 }
 
-@keyframes flicker {
-    0% { transform: rotate(-1deg) scale(1); }
-    100% { transform: rotate(1deg) scale(1.1); }
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
 }
 
 #instructions {
@@ -54,11 +81,40 @@ body {
     padding: 15px 25px;
     border-radius: 10px;
     border: 1px solid #8B4513;
-    opacity: 0;
-    animation: fadeInUp 2s ease-out 3s forwards;
+    font-family: 'Honoria', serif;
+    z-index: 1001;
 }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+#music-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+#music-button {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #8B4513;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#music-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.music-icon {
+    font-size: 20px;
+    color: #D2B48C;
+}
+
+#music-button.playing {
+    background: rgba(139, 69, 19, 0.7);
 }

@@ -1,6 +1,7 @@
 class Tent {
     constructor(scene) {
         this.scene = scene;
+        this.position = new THREE.Vector3(-4, 0, 10.5); // Moved forward to match campfire
     }
 
     create() {
