@@ -9,18 +9,23 @@
 </head>
 <body>
     <div id="music-toggle">
+        <div class="signature">
+            <span class="name">NEEL DATTA</span>
+            <span class="year">, 2025</span>
+        </div>
         <button id="music-button">
-            <span class="music-icon">🎵</span>
+            <span class="music-icon">♫</span>
         </button>
     </div>
 
-    <audio id="background-music" loop>
+    <audio id="background-music" loop preload="auto">
         <source src="audio/Background2.mp3" type="audio/mpeg">
     </audio>
 
     <div id="loading-screen">
         <div class="fire-loader"></div>
         <div class="loading-text">Lighting the campfire...</div>
+        <div class="enter-text" style="display: none;">Click to Enter</div>
     </div>
 
     <div id="container" style="display: none;">

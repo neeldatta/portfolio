@@ -48,8 +48,8 @@ class CampfirePortfolio {
             // Start animation loop
             this.animate();
 
-            // Hide loading screen
-            this.hideLoading();
+            // Show ready state after loading
+            this.showReadyState();
             
             this.isLoaded = true;
             console.log('🔥 Campfire Portfolio loaded successfully!');
@@ -62,6 +62,7 @@ class CampfirePortfolio {
     initMusic() {
         this.music = document.getElementById('background-music');
         const musicButton = document.getElementById('music-button');
+        const musicIcon = musicButton.querySelector('.music-icon');
 
         // Set initial state
         musicButton.classList.add('playing');
@@ -71,12 +72,63 @@ class CampfirePortfolio {
             if (this.isMusicPlaying) {
                 this.music.pause();
                 musicButton.classList.remove('playing');
+                musicIcon.textContent = '♫̶'; // Crossed out music note
             } else {
                 this.music.play();
                 musicButton.classList.add('playing');
+                musicIcon.textContent = '♫'; // Regular music note
             }
             this.isMusicPlaying = !this.isMusicPlaying;
         });
+    }
+
+    showReadyState() {
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            const loadingText = loadingScreen.querySelector('.loading-text');
+            const enterText = loadingScreen.querySelector('.enter-text');
+            
+            // Fade out loading text
+            loadingText.style.opacity = '0';
+            
+            // Show enter text
+            setTimeout(() => {
+                loadingText.style.display = 'none';
+                enterText.style.display = 'block';
+                loadingScreen.classList.add('ready');
+                
+                // Add click handler for entering
+                loadingScreen.addEventListener('click', () => {
+                    this.enterScene();
+                }, { once: true });
+            }, 500);
+        }, 2000);
+    }
+
+    enterScene() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const container = document.getElementById('container');
+        
+        // Start music
+        this.music.play().then(() => {
+            console.log('🎵 Music started');
+        }).catch(error => {
+            console.log('🎵 Could not start music:', error);
+            this.isMusicPlaying = false;
+            document.getElementById('music-button').classList.remove('playing');
+        });
+        
+        // Fade out loading screen
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.transition = 'opacity 1s ease-out';
+        
+        // Show container
+        container.style.display = 'block';
+        
+        // Remove loading screen after fade
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 1000);
     }
 
     animate() {
@@ -195,28 +247,6 @@ class CampfirePortfolio {
         if (fireLight) {
             fireLight.intensity = 2.2 + Math.sin(time * 12) * 0.3 + Math.random() * 0.2;
         }
-    }
-
-    hideLoading() {
-        setTimeout(() => {
-            const loadingScreen = document.getElementById('loading-screen');
-            const container = document.getElementById('container');
-            
-            // Fade out loading screen
-            loadingScreen.style.opacity = '0';
-            loadingScreen.style.transition = 'opacity 1s ease-out';
-            
-            // Show container
-            container.style.display = 'block';
-            
-            // Start playing music
-            this.music.play();
-            
-            // Remove loading screen after fade
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 1000);
-        }, 2000);
     }
 
     // Handle window resize
