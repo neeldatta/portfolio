@@ -16,6 +16,25 @@ class Campfire {
 
     createFirePit() {
         const fireGroup = new THREE.Group();
+        fireGroup.userData = {
+            isCampfire: true,
+            brightness: 1.0 // Default brightness multiplier
+        };
+
+        // Add invisible clickable area - made larger to encompass entire fire area
+        const clickableArea = new THREE.Mesh(
+            new THREE.CylinderGeometry(2.5, 2.5, 2, 32), // Increased radius and height
+            new THREE.MeshBasicMaterial({ 
+                transparent: true,
+                opacity: 0,
+                visible: false
+            })
+        );
+        clickableArea.position.y = 1; // Raised to center on the fire
+        clickableArea.userData = {
+            isCampfire: true
+        };
+        fireGroup.add(clickableArea);
 
         // Wooden sign
         const signGroup = new THREE.Group();
@@ -120,9 +139,9 @@ class Campfire {
         
         for (let i = 0; i < 20; i++) {
             const particleMaterial = new THREE.MeshBasicMaterial({
-                color: new THREE.Color().setHSL(0.1 - Math.random() * 0.1, 1, 0.6 + Math.random() * 0.4),
+                color: new THREE.Color().setHSL(0.1 - Math.random() * 0.1, 1, 0.7 + Math.random() * 0.3),
                 transparent: true,
-                opacity: 0.9
+                opacity: 0.95
             });
             
             const particle = new THREE.Mesh(particleGeometry, particleMaterial);
@@ -136,7 +155,7 @@ class Campfire {
                 isFireParticle: true,
                 velocity: new THREE.Vector3(
                     (Math.random() - 0.5) * 0.02,
-                    0.02 + Math.random() * 0.03,
+                    0.03 + Math.random() * 0.04,
                     (Math.random() - 0.5) * 0.02
                 ),
                 life: Math.random() * 2 + 1
@@ -217,7 +236,7 @@ class Campfire {
             if (child.userData.isFireParticle) {
                 child.position.add(child.userData.velocity);
                 child.userData.life -= 0.01;
-                child.material.opacity = Math.max(0, child.userData.life * 0.5);
+                child.material.opacity = Math.max(0, child.userData.life * 0.6);
 
                 if (child.userData.life <= 0) {
                     child.position.set(
@@ -226,7 +245,7 @@ class Campfire {
                         (Math.random() - 0.5) * 0.5
                     );
                     child.userData.life = Math.random() * 2 + 1;
-                    child.material.color.setHSL(0.1 - Math.random() * 0.1, 1, 0.5 + Math.random() * 0.3);
+                    child.material.color.setHSL(0.1 - Math.random() * 0.1, 1, 0.6 + Math.random() * 0.4);
                 }
             }
 
@@ -243,5 +262,82 @@ class Campfire {
                 }
             }
         });
+    }
+
+    // Add method to control brightness
+    setBrightness(multiplier) {
+        // Comment out brightness control functionality
+        /*
+        console.log('Campfire setBrightness called with:', multiplier); // Debug log
+
+        // Update fire particles
+        this.scene.traverse((child) => {
+            if (child.userData.isCampfire) {
+                child.userData.brightness = multiplier;
+            }
+            if (child.userData.isFireParticle) {
+                if (multiplier === 0) {
+                    child.material.opacity = 0;
+                    child.visible = false;
+                } else {
+                    child.visible = true;
+                    child.material.opacity = Math.max(0, child.userData.life * 0.8 * multiplier);
+                    const hsl = child.material.color.getHSL({});
+                    child.material.color.setHSL(hsl.h, hsl.s, Math.min(1, hsl.l * multiplier));
+                }
+            }
+        });
+
+        // Update main fire light
+        const fireLight = this.scene.children.find(
+            child => child.type === 'PointLight' && child.color.getHex() === 0xff6600
+        );
+        if (fireLight) {
+            console.log('Updating fire light intensity to:', multiplier * 20); // Debug log
+            if (multiplier === 0) {
+                fireLight.intensity = 0;
+                fireLight.visible = false;
+            } else {
+                fireLight.visible = true;
+                fireLight.intensity = 20 * multiplier; // Increased base intensity
+                fireLight.distance = 50 * multiplier; // Increased light range
+            }
+        }
+
+        // Update ambient light
+        const ambientLight = this.scene.children.find(
+            child => child.type === 'AmbientLight' && !child.userData.isSecondary
+        );
+        if (ambientLight) {
+            console.log('Updating ambient light intensity to:', multiplier * 0.5); // Debug log
+            if (multiplier === 0) {
+                ambientLight.intensity = 0.05; // Very dark when fire is off
+            } else {
+                ambientLight.intensity = 0.5 * multiplier; // Increased ambient light effect
+            }
+        }
+
+        // Update or create secondary warm ambient light
+        let secondaryAmbient = this.scene.children.find(
+            child => child.type === 'AmbientLight' && child.userData.isSecondary
+        );
+        
+        if (!secondaryAmbient) {
+            secondaryAmbient = new THREE.AmbientLight(0xff6600, 0);
+            secondaryAmbient.userData.isSecondary = true;
+            this.scene.add(secondaryAmbient);
+        }
+        
+        if (multiplier === 0) {
+            secondaryAmbient.intensity = 0;
+        } else {
+            secondaryAmbient.intensity = 0.3 * multiplier; // Warm ambient light
+        }
+
+        // Force renderer update
+        if (this.scene.renderer) {
+            this.scene.renderer.render(this.scene, this.scene.camera);
+        }
+        */
     }
 }

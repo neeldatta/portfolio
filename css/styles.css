@@ -52,6 +52,7 @@ body {
     transition: opacity 0.5s ease;
     color: #D2B48C;
     text-shadow: 0 0 10px rgba(210, 180, 140, 0.5);
+    padding-left: 8px;
 }
 
 .enter-text {

@@ -411,27 +411,16 @@ class Environment {
 
         // M
         const mPoints = [
-            new THREE.Vector3(1.4, 0.01, 4+ x),
-            new THREE.Vector3(1.4, 0.01, 3.5+ x),
-            new THREE.Vector3(1.7, 0.01, 3.75+ x),
-            new THREE.Vector3(2.0, 0.01, 3.5+ x),
-            new THREE.Vector3(2.0, 0.01, 4+ x)
+            new THREE.Vector3(1.6, 0.01, 4+ x),
+            new THREE.Vector3(1.6, 0.01, 3.5+ x),
+            new THREE.Vector3(1.9, 0.01, 3.75+ x),
+            new THREE.Vector3(2.2, 0.01, 3.5+ x),
+            new THREE.Vector3(2.2, 0.01, 4+ x)
         ];
         const mGeometry = new THREE.BufferGeometry().setFromPoints(mPoints);
         const mLine = new THREE.Line(mGeometry, material);
         this.scene.add(mLine);
 
-        // Exclamation mark
-        const exclamationPoints = [
-            // Vertical line
-            new THREE.Vector3(2.3, 0.01, 3.5 + x),
-            new THREE.Vector3(2.3, 0.01, 4 + x),
-            // Dot
-            new THREE.Vector3(2.3, 0.01, 3.4 + x)
-        ];
-        const exclamationGeometry = new THREE.BufferGeometry().setFromPoints(exclamationPoints);
-        const exclamationLine = new THREE.Line(exclamationGeometry, material);
-        this.scene.add(exclamationLine);
         
         // E
         const e2Points = [
@@ -448,7 +437,21 @@ class Environment {
         const e2Geometry = new THREE.BufferGeometry().setFromPoints(e2Points);
         const e2Line = new THREE.Line(e2Geometry, material);
         this.scene.add(e2Line);
+
+        // // Exclamation mark
+        // const exclamationPoints = [
+        //     // Vertical line
+        //     new THREE.Vector3(2.3, 0.01, 3.5 + x),
+        //     new THREE.Vector3(2.3, 0.01, 4 + x),
+        //     // Dot
+        //     new THREE.Vector3(2.3, 0.01, 3.4 + x)
+        // ];
+        // const exclamationGeometry = new THREE.BufferGeometry().setFromPoints(exclamationPoints);
+        // const exclamationLine = new THREE.Line(exclamationGeometry, material);
+        // this.scene.add(exclamationLine);
+
     }
+
 
     createTableArrow() {
         const material = new THREE.LineBasicMaterial({ 

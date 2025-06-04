@@ -6,6 +6,13 @@ class UI {
         
         modalBody.innerHTML = this.getPortfolioContent();
         modal.style.display = 'block';
+        modal.style.opacity = '0';
+        modal.style.transition = 'opacity 0.5s ease-in-out';
+        
+        // Trigger the animation
+        setTimeout(() => {
+            modal.style.opacity = '1';
+        }, 50);
     }
 
     static showContact() {
@@ -14,6 +21,13 @@ class UI {
         
         modalBody.innerHTML = this.getContactContent();
         modal.style.display = 'block';
+        modal.style.opacity = '0';
+        modal.style.transition = 'opacity 0.5s ease-in-out';
+        
+        // Trigger the animation
+        setTimeout(() => {
+            modal.style.opacity = '1';
+        }, 50);
     }
 
     static showAbout() {
@@ -22,6 +36,13 @@ class UI {
         
         modalBody.innerHTML = this.getAboutContent();
         modal.style.display = 'block';
+        modal.style.opacity = '0';
+        modal.style.transition = 'opacity 0.5s ease-in-out';
+        
+        // Trigger the animation
+        setTimeout(() => {
+            modal.style.opacity = '1';
+        }, 50);
     }
 
     static showMug() {
@@ -40,79 +61,116 @@ class UI {
             </div>
         `;
         modal.style.display = 'block';
+        modal.style.opacity = '0';
+        modal.style.transition = 'opacity 0.5s ease-in-out';
+        
+        // Trigger the animation
+        setTimeout(() => {
+            modal.style.opacity = '1';
+        }, 50);
     }
 
     static closeModal() {
         const modal = document.getElementById('portfolioModal');
-        modal.style.display = 'none';
+        modal.style.opacity = '0';
+        
+        // Wait for fade out animation to complete before hiding
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 500);
     }
 
     static getPortfolioContent() {
         return `
             <div class="modal-header">
                 <h1>My Portfolio</h1>
-                <p>Tales of Code & Creation</p>
+                <p>Engineering Solutions from Data to Deployment</p>
             </div>
             <div class="modal-body">
                 <div class="section">
                     <h2>Featured Projects</h2>
                     
                     <div class="project">
-                        <h3>Full-Stack Real Estate Investment Platform</h3>
-                        <p>A full-stack web application built with Next.js, Tailwind CSS, and Supabase. Features include user authentication, payment processing, and real-time inventory management.</p>
-                        <a href="#" class="project-link">View Project</a>
+                        <h3>Energy Data Analytics Platform @ Abjayon</h3>
+                        <p>End-to-end data pipeline processing 5TB+ daily meter data with ML-powered energy disaggregation achieving 84% NILM accuracy and $2M annual savings. Architected using Kafka, Spark Streaming, and MongoDB with 99.9% uptime. Improved LSTM-based energy theft detection by 35%.</p>
+                        <a href="#" class="project-link">Technical Deep Dive</a>
+                        <a href="#" class="project-link" style="margin-left: 10px;">Architecture Docs</a>
+                    </div>
+    
+                    <div class="project">
+                        <h3>EQTY LYFE - Full-Stack Fintech Platform</h3>
+                        <p>Architected and developed complete home equity platform managing entire SDLC. Built secure mortgage application flow processing thousands of applications monthly with proprietary underwriting, reducing overhead by 45%. Led cross-functional team of 3 engineers with 30% faster development cycles.</p>
+                        <a href="#" class="project-link">Live Platform</a>
+                        <a href="#" class="project-link" style="margin-left: 10px;">Case Study</a>
+                    </div>
+    
+                    <div class="project">
+                        <h3>Reusable Spark ETL Framework</h3>
+                        <p>Designed and built Python/Spark framework for energy data transformations, reducing development time by 60% across multiple utility clients. Framework handles data validation, transformations, and MongoDB integration with built-in monitoring and error handling.</p>
+                        <a href="#" class="project-link">Framework Docs</a>
                         <a href="#" class="project-link" style="margin-left: 10px;">GitHub</a>
                     </div>
-
+    
                     <div class="project">
-                        <h3>Data Visualization Dashboard</h3>
-                        <p>Interactive dashboard for analyzing business metrics using D3.js and Python. Processes large datasets and presents insights through dynamic charts and graphs.</p>
+                        <h3>ML Credit Risk Assessment System @ Torpago</h3>
+                        <p>Developed automated underwriting system using ensemble ML models (logistic regression, decision trees) achieving 85% prediction accuracy. Automated 70% of underwriting workflows and increased qualified applicant throughput by 3x. Built with Go, Echo framework, and PostgreSQL backend.</p>
+                        <a href="#" class="project-link">Model Performance</a>
+                        <a href="#" class="project-link" style="margin-left: 10px;">Technical Report</a>
+                    </div>
+    
+                    <div class="project">
+                        <h3>EEG Brain-Computer Interface</h3>
+                        <p>Engineered brain-computer interface using OpenBCI hardware and custom signal processing neural networks. Achieved 85% accuracy in thought pattern classification for gaming controls using TensorFlow and advanced signal processing techniques.</p>
+                        <a href="#" class="project-link">Demo Video</a>
+                        <a href="#" class="project-link" style="margin-left: 10px;">Research Paper</a>
+                    </div>
+    
+                    <div class="project">
+                        <h3>Intelligent NLP Query Matching Tool @ Sunstone Secure</h3>
+                        <p>Developed NLP tool with web-scraping capabilities using Python NLTK to match and score queries with webpage text blocks. Achieved 95% query matching accuracy and automated data collection process, reducing manual effort by 80%.</p>
                         <a href="#" class="project-link">View Project</a>
+                        <a href="#" class="project-link" style="margin-left: 10px;">Algorithm Details</a>
+                    </div>
+    
+                    <div class="project">
+                        <h3>Bear Maps - Geospatial Navigation System</h3>
+                        <p>Google Maps-like application implementing k-d tree and extrinsic Priority Queue data structures from scratch. Incorporated A* pathfinding algorithm for optimal route calculation with real-time mapping capabilities.</p>
+                        <a href="#" class="project-link">Live Demo</a>
                         <a href="#" class="project-link" style="margin-left: 10px;">GitHub</a>
                     </div>
-
+    
                     <div class="project">
-                        <h3>3D Portfolio Website</h3>
-                        <p>Immersive campfire-themed portfolio built with Three.js. Features interactive 3D objects, particle systems, and smooth camera transitions for a unique user experience.</p>
-                        <a href="#" class="project-link">View Project</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">GitHub</a>
-                    </div>
-
-                    <div class="project">
-                        <h3>AI Chatbot Integration</h3>
-                        <p>Intelligent customer service bot using natural language processing. Integrates with existing CRM systems and provides 24/7 automated support.</p>
-                        <a href="#" class="project-link">View Project</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">GitHub</a>
+                        <h3>Automotive Sales Prediction Analytics</h3>
+                        <p>Performed comprehensive EDA on US Bureau of Transportation Statistics dataset. Used GLMs alongside nonparametric decision tree regressors to explore feature correlations and their impact on automotive sales forecasting.</p>
+                        <a href="#" class="project-link">Analysis Report</a>
+                        <a href="#" class="project-link" style="margin-left: 10px;">Jupyter Notebook</a>
                     </div>
                 </div>
-
+    
                 <div class="section">
                     <h2>Technical Skills</h2>
                     <div class="skills-grid">
-                        <div class="skill-tag">JavaScript</div>
                         <div class="skill-tag">Python</div>
-                        <div class="skill-tag">React</div>
-                        <div class="skill-tag">Node.js</div>
+                        <div class="skill-tag">Apache Spark</div>
+                        <div class="skill-tag">Kafka</div>
                         <div class="skill-tag">MongoDB</div>
-                        <div class="skill-tag">Three.js</div>
-                        <div class="skill-tag">Docker</div>
-                        <div class="skill-tag">AWS</div>
-                        <div class="skill-tag">Git</div>
-                        <div class="skill-tag">PostgreSQL</div>
+                        <div class="skill-tag">TensorFlow</div>
+                        <div class="skill-tag">PyTorch</div>
                         <div class="skill-tag">TypeScript</div>
-                        <div class="skill-tag">GraphQL</div>
-                        <div class="skill-tag">WebGL</div>
-                        <div class="skill-tag">Blender</div>
-                        <div class="skill-tag">D3.js</div>
-                        <div class="skill-tag">Express.js</div>
+                        <div class="skill-tag">Next.js</div>
+                        <div class="skill-tag">React</div>
+                        <div class="skill-tag">PostgreSQL</div>
+                        <div class="skill-tag">AWS</div>
+                        <div class="skill-tag">Docker</div>
+                        <div class="skill-tag">Apache Airflow</div>
+                        <div class="skill-tag">scikit-learn</div>
+                        <div class="skill-tag">Pandas</div>
+                        <div class="skill-tag">Go</div>
+                        <div class="skill-tag">Java</div>
+                        <div class="skill-tag">Node.js</div>
+                        <div class="skill-tag">Git</div>
+                        <div class="skill-tag">ELK Stack</div>
                     </div>
-                </div>
-
-                <div class="section">
-                    <h2>About Me</h2>
-                    <p>I'm a passionate developer who loves creating digital experiences that blend technology with storytelling. When I'm not coding, you can find me around campfires like this one, sharing stories and connecting with others.</p>
-                    <p>I believe that great software should feel as natural and inviting as gathering around a warm fire with friends. My approach combines technical expertise with creative vision to build applications that are both functional and memorable.</p>
-                    <p>Currently exploring the intersection of web development and 3D graphics, bringing immersive experiences to the browser.</p>
                 </div>
             </div>
         `;
@@ -221,7 +279,268 @@ class UI {
             </div>
         `;
     }
+
+    static showCampfireControls(campfire) {
+        // Remove any existing controls first
+        const existingControls = document.getElementById('campfire-controls');
+        if (existingControls) {
+            document.body.removeChild(existingControls);
+        }
+
+        // Create container for campfire controls
+        const container = document.createElement('div');
+        container.id = 'campfire-controls';
+        container.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 100px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 250px;
+            color: white;
+            font-family: 'Honoria', sans-serif;
+            z-index: 1000;
+        `;
+
+        // Add label
+        const label = document.createElement('div');
+        label.textContent = 'Campfire Brightness';
+        label.style.cssText = `
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #ff6600;
+        `;
+        container.appendChild(label);
+
+        // Add slider
+        const slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = '0';
+        slider.max = '3';
+        slider.step = '0.1';
+        slider.value = '1';
+        slider.style.cssText = `
+            width: 100%;
+            margin: 10px 0;
+            -webkit-appearance: none;
+            background: #333;
+            height: 8px;
+            border-radius: 4px;
+            outline: none;
+        `;
+
+        // Style the slider thumb
+        slider.style.setProperty('--thumb-color', '#ff6600');
+        const style = document.createElement('style');
+        style.textContent = `
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 20px;
+                height: 20px;
+                background: var(--thumb-color);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+            input[type="range"]::-webkit-slider-thumb:hover {
+                background: #ff8533;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add event listeners for both input and change events
+        slider.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            console.log('Setting brightness to:', value); // Debug log
+            if (campfire && typeof campfire.setBrightness === 'function') {
+                campfire.setBrightness(value);
+            } else {
+                console.error('Campfire or setBrightness method not found!');
+            }
+        });
+
+        slider.addEventListener('change', (e) => {
+            const value = parseFloat(e.target.value);
+            console.log('Brightness changed to:', value); // Debug log
+            if (campfire && typeof campfire.setBrightness === 'function') {
+                campfire.setBrightness(value);
+            }
+        });
+
+        container.appendChild(slider);
+
+        // Add close button
+        const closeButton = document.createElement('button');
+        closeButton.textContent = '×';
+        closeButton.style.cssText = `
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+        `;
+        closeButton.onclick = () => {
+            document.body.removeChild(container);
+        };
+        container.appendChild(closeButton);
+
+        document.body.appendChild(container);
+    }
+
+    static init() {
+        this.createTipsToggle();
+    }
+
+    static createTipsToggle() {
+        // Create container for the toggle
+        const toggleContainer = document.createElement('div');
+        toggleContainer.id = 'tips-toggle';
+        toggleContainer.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            font-family: 'Honoria', sans-serif;
+            color: #D2B48C;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #8B4513;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        `;
+        toggleContainer.innerHTML = '?';
+        toggleContainer.style.color = '#D2B48C';
+        toggleContainer.onclick = (e) => {
+            e.stopPropagation();
+            this.toggleMenu();
+        };
+
+        // Create dropdown menu
+        const menu = document.createElement('div');
+        menu.id = 'tips-menu';
+        menu.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-left: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #8B4513;
+            border-radius: 10px;
+            padding: 5px 0;
+            min-width: 120px;
+            display: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        `;
+
+        // Menu items
+        const menuItems = [
+            { text: 'Toggle Tips', action: () => this.toggleTips() },
+            { text: 'About Me', action: () => this.navigateToSection('about') },
+            { text: 'Projects', action: () => this.navigateToSection('projects') },
+            { text: 'Contact', action: () => this.navigateToSection('contact') }
+        ];
+
+        menuItems.forEach(item => {
+            const menuItem = document.createElement('div');
+            menuItem.style.cssText = `
+                padding: 6px 12px;
+                color: #D2B48C;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                font-family: 'Honoria', sans-serif;
+                font-size: 14px;
+            `;
+            menuItem.textContent = item.text;
+            menuItem.onmouseover = () => {
+                menuItem.style.background = 'rgba(139, 69, 19, 0.3)';
+                menuItem.style.color = '#fff';
+            };
+            menuItem.onmouseout = () => {
+                menuItem.style.background = 'transparent';
+                menuItem.style.color = '#D2B48C';
+            };
+            menuItem.onclick = (e) => {
+                e.stopPropagation();
+                item.action();
+                this.toggleMenu();
+            };
+            menu.appendChild(menuItem);
+        });
+
+        toggleContainer.appendChild(menu);
+        document.body.appendChild(toggleContainer);
+
+        // Close menu when clicking outside
+        document.addEventListener('click', () => {
+            menu.style.display = 'none';
+        });
+
+        // Set initial state to ON
+        const instructions = document.getElementById('instructions');
+        if (instructions) {
+            instructions.style.display = 'block';
+        }
+    }
+
+    static toggleMenu() {
+        const menu = document.getElementById('tips-menu');
+        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    static navigateToSection(section) {
+        // Get the interaction controller from the window object
+        const interactionController = window.interactionController;
+        if (!interactionController) return;
+
+        // First zoom to the appropriate view
+        switch(section) {
+            case 'about':
+                interactionController.navigationController.zoomToAbout();
+                setTimeout(() => UI.showAbout(), 1000);
+                break;
+            case 'projects':
+                interactionController.navigationController.zoomToDesk();
+                setTimeout(() => UI.showPortfolio(), 1000);
+                break;
+            case 'contact':
+                interactionController.navigationController.zoomToDesk();
+                setTimeout(() => UI.showContact(), 1000);
+                break;
+        }
+    }
+
+    static toggleTips() {
+        const instructions = document.getElementById('instructions');
+        const toggle = document.getElementById('tips-toggle');
+        
+        if (instructions.style.display === 'none') {
+            instructions.style.display = 'block';
+            toggle.style.color = '#D2B48C';
+        } else {
+            instructions.style.display = 'none';
+            toggle.style.color = '#8B4513';
+        }
+    }
 }
+
+// Initialize UI when the script loads
+UI.init();
 
 // Make UI globally available
 window.UI = UI;

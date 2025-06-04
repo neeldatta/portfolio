@@ -39,7 +39,7 @@ class SceneManager {
         this.scene.add(ambientLight);
 
         // Fire light
-        const fireLight = new THREE.PointLight(0xff6600, 3, 25);
+        const fireLight = new THREE.PointLight(0xff6600, 5, 30);
         fireLight.position.set(0, 2, 0);
         fireLight.castShadow = false;
         this.scene.add(fireLight);

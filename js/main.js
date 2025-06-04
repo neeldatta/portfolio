@@ -45,6 +45,9 @@ class CampfirePortfolio {
                 this.navigationController
             );
 
+            // Expose interaction controller to window
+            window.interactionController = this.interactionController;
+
             // Start animation loop
             this.animate();
 
@@ -108,6 +111,7 @@ class CampfirePortfolio {
     enterScene() {
         const loadingScreen = document.getElementById('loading-screen');
         const container = document.getElementById('container');
+        const instructions = document.getElementById('instructions');
         
         // Start music
         this.music.play().then(() => {
@@ -122,8 +126,11 @@ class CampfirePortfolio {
         loadingScreen.style.opacity = '0';
         loadingScreen.style.transition = 'opacity 1s ease-out';
         
-        // Show container
+        // Show container and instructions
         container.style.display = 'block';
+        if (instructions) {
+            instructions.style.display = 'block';
+        }
         
         // Remove loading screen after fade
         setTimeout(() => {

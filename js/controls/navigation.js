@@ -80,7 +80,6 @@ class NavigationController {
             } else {
                 instructions.textContent = 'Press Space to return to overview';
             }
-            instructions.style.display = 'block';
         }
     }
 
@@ -105,8 +104,8 @@ class NavigationController {
         this.isTransitioning = true;
         this.currentView = 'about';
         
-        // Target position focused on the sign
-        const aboutTarget = { x: -7, y: 2.5, z: 3 };
+        // Target position focused on the sign with more rightward position
+        const aboutTarget = { x: -3.5, y: 2.1, z: 4 };
         
         this.animateCameraTo(aboutTarget, () => {
             this.isTransitioning = false;
@@ -123,6 +122,21 @@ class NavigationController {
         const overviewTarget = { x: 0, y: 2, z: 8 };
         
         this.animateCameraTo(overviewTarget, () => {
+            this.isTransitioning = false;
+            this.updateInstructions();
+        });
+    }
+
+    zoomToCampfire() {
+        if (this.isTransitioning) return;
+        
+        this.isTransitioning = true;
+        this.currentView = 'campfire';
+        
+        // Target position focused on the campfire
+        const campfireTarget = { x: 0, y: 1.5, z: 3 };
+        
+        this.animateCameraTo(campfireTarget, () => {
             this.isTransitioning = false;
             this.updateInstructions();
         });
@@ -178,7 +192,9 @@ class NavigationController {
         const lookTarget = this.currentView === 'desk' 
             ? new THREE.Vector3(4, 1, 0)  // Look at desk
             : this.currentView === 'about'
-            ? new THREE.Vector3(-7, 1.5, 1) // Look at sign
+            ? new THREE.Vector3(-5, 1.5, 1.5) // Adjusted look target for more rotated view
+            : this.currentView === 'campfire'
+            ? new THREE.Vector3(0, 0.5, 0) // Look at campfire
             : new THREE.Vector3(0, 1, 0); // Look at campfire
             
         this.camera.lookAt(lookTarget);

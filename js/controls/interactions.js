@@ -29,6 +29,12 @@ class InteractionController {
     }
 
     handleClick(event) {
+        // Check if loading screen is still visible
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen && loadingScreen.style.display !== 'none') {
+            return; // Ignore clicks if loading screen is still visible
+        }
+
         this.updateMousePosition(event);
         
         // Cast ray from camera through mouse position
@@ -47,6 +53,12 @@ class InteractionController {
     }
 
     handleHover(event) {
+        // Check if loading screen is still visible
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen && loadingScreen.style.display !== 'none') {
+            return; // Ignore hover effects if loading screen is still visible
+        }
+
         this.updateMousePosition(event);
         
         // Cast ray for hover effects
@@ -83,7 +95,8 @@ class InteractionController {
                     current.userData.isScroll || 
                     current.userData.isBottle ||
                     current.userData.isSign ||
-                    current.userData.isMug) {
+                    current.userData.isMug ||
+                    current.userData.isCampfire) {
                     return current;
                 }
             }
@@ -115,6 +128,24 @@ class InteractionController {
         } else if (userData.isMug) {
             console.log('☕ Clicked on mug - opening mug panel...');
             UI.showMug();
+        } else if (userData.isCampfire) {
+            console.log('🔥 Clicked on campfire - zooming in...');
+            // First zoom to campfire
+            this.navigationController.zoomToCampfire();
+            
+            // Comment out the slider functionality
+            /*
+            // Then show controls after a short delay to allow zoom to complete
+            setTimeout(() => {
+                // Find the campfire instance
+                const campfire = this.scene.children.find(
+                    child => child.userData && child.userData.isCampfire
+                );
+                if (campfire) {
+                    UI.showCampfireControls(campfire);
+                }
+            }, 1000); // Wait for 1 second to allow zoom animation to complete
+            */
         }
     }
 
