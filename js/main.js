@@ -116,6 +116,15 @@ class CampfirePortfolio {
                 loadingScreen.addEventListener('click', () => {
                     this.enterScene();
                 }, { once: true });
+
+                // Add keyboard event listeners
+                const handleKeyPress = (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        this.enterScene();
+                        document.removeEventListener('keydown', handleKeyPress);
+                    }
+                };
+                document.addEventListener('keydown', handleKeyPress);
             }, 500);
         }, 2000);
     }
