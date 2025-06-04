@@ -239,7 +239,7 @@ class UI {
             </div>
             <div class="modal-body">
                 <div class="text-image-block">
-                    <img src="img/neel.png" alt="Me at work" class="block-image left">
+                    <img src="img/NeeldattaC.jpeg" alt="Me at work" class="block-image left">
                     <div class="text-content">
                         <p>I'm a software engineer who fell in love with solving complex problems through code. My journey started at UC Berkeley studying Data Science and Cognitive Science, where I discovered my passion for building systems that can process massive amounts of data and extract meaningful insights. There's something incredibly satisfying about architecting a pipeline that handles 5TB of data daily and just works.</p>
                         

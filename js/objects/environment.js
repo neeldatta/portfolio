@@ -2,6 +2,7 @@
 class Environment {
     constructor(scene) {
         this.scene = scene;
+        this.create();
     }
 
     create() {
@@ -14,7 +15,6 @@ class Environment {
         this.createBackgroundTrees();
         this.createStars();
         this.createWelcomeText();
-        this.createTableArrow();
     }
 
     createGround() {
@@ -173,15 +173,79 @@ class Environment {
     }
 
     createBackgroundTrees() {
-        // Tree positions behind camera
+        // Tree positions around the perimeter
         const treePositions = [
-            { x: -15, z: 20, type: 'coniferous' },
-            { x: -10, z: 22, type: 'deciduous' },
-            { x: -5, z: 20, type: 'coniferous' },
-            { x: 0, z: 22, type: 'deciduous' },
-            { x: 5, z: 20, type: 'coniferous' },
-            { x: 10, z: 22, type: 'deciduous' },
-            { x: 15, z: 20, type: 'coniferous' }
+            // Back row (behind camera)
+            { x: -20, z: 20, type: 'coniferous' },
+            { x: -17, z: 21, type: 'deciduous' },
+            { x: -15, z: 22, type: 'coniferous' },
+            { x: -12, z: 21, type: 'deciduous' },
+            { x: -10, z: 20, type: 'coniferous' },
+            { x: -7, z: 21, type: 'deciduous' },
+            { x: -5, z: 22, type: 'coniferous' },
+            { x: -2, z: 21, type: 'deciduous' },
+            { x: 0, z: 20, type: 'coniferous' },
+            { x: 2, z: 21, type: 'deciduous' },
+            { x: 5, z: 22, type: 'coniferous' },
+            { x: 7, z: 21, type: 'deciduous' },
+            { x: 10, z: 20, type: 'coniferous' },
+            { x: 12, z: 21, type: 'deciduous' },
+            { x: 15, z: 22, type: 'coniferous' },
+            { x: 17, z: 21, type: 'deciduous' },
+            { x: 20, z: 20, type: 'coniferous' },
+            
+            // Left side
+            { x: -25, z: 15, type: 'deciduous' },
+            { x: -25, z: 12, type: 'coniferous' },
+            { x: -25, z: 10, type: 'deciduous' },
+            { x: -25, z: 7, type: 'coniferous' },
+            { x: -25, z: 5, type: 'deciduous' },
+            { x: -25, z: 2, type: 'coniferous' },
+            { x: -25, z: 0, type: 'deciduous' },
+            { x: -25, z: -2, type: 'coniferous' },
+            { x: -25, z: -5, type: 'deciduous' },
+            { x: -25, z: -7, type: 'coniferous' },
+            { x: -25, z: -10, type: 'deciduous' },
+            { x: -25, z: -12, type: 'coniferous' },
+            { x: -25, z: -15, type: 'deciduous' },
+            { x: -25, z: -18, type: 'coniferous' },
+            { x: -25, z: -20, type: 'deciduous' },
+            
+            // Right side
+            { x: 25, z: 15, type: 'deciduous' },
+            { x: 25, z: 12, type: 'coniferous' },
+            { x: 25, z: 10, type: 'deciduous' },
+            { x: 25, z: 7, type: 'coniferous' },
+            { x: 25, z: 5, type: 'deciduous' },
+            { x: 25, z: 2, type: 'coniferous' },
+            { x: 25, z: 0, type: 'deciduous' },
+            { x: 25, z: -2, type: 'coniferous' },
+            { x: 25, z: -5, type: 'deciduous' },
+            { x: 25, z: -7, type: 'coniferous' },
+            { x: 25, z: -10, type: 'deciduous' },
+            { x: 25, z: -12, type: 'coniferous' },
+            { x: 25, z: -15, type: 'deciduous' },
+            { x: 25, z: -18, type: 'coniferous' },
+            { x: 25, z: -20, type: 'deciduous' },
+            
+            // Front row (in front of camera)
+            { x: -20, z: -20, type: 'coniferous' },
+            { x: -17, z: -21, type: 'deciduous' },
+            { x: -15, z: -22, type: 'coniferous' },
+            { x: -12, z: -21, type: 'deciduous' },
+            { x: -10, z: -20, type: 'coniferous' },
+            { x: -7, z: -21, type: 'deciduous' },
+            { x: -5, z: -22, type: 'coniferous' },
+            { x: -2, z: -21, type: 'deciduous' },
+            { x: 0, z: -20, type: 'coniferous' },
+            { x: 2, z: -21, type: 'deciduous' },
+            { x: 5, z: -22, type: 'coniferous' },
+            { x: 7, z: -21, type: 'deciduous' },
+            { x: 10, z: -20, type: 'coniferous' },
+            { x: 12, z: -21, type: 'deciduous' },
+            { x: 15, z: -22, type: 'coniferous' },
+            { x: 17, z: -21, type: 'deciduous' },
+            { x: 20, z: -20, type: 'coniferous' }
         ];
 
         // Create trees
@@ -222,8 +286,8 @@ class Environment {
                     foliage.castShadow = true;
                     foliage.receiveShadow = true;
                     this.scene.add(foliage);
-            }
-        } else {
+                }
+            } else {
                 // Create deciduous (round) tree
                 const foliageGeometry = new THREE.SphereGeometry(1.2 * scale, 8, 8);
                 const foliageMaterial = new THREE.MeshStandardMaterial({ 
@@ -231,9 +295,9 @@ class Environment {
                     roughness: 0.8,
                     metalness: 0.1
                 });
-            const foliage = new THREE.Mesh(foliageGeometry, foliageMaterial);
+                const foliage = new THREE.Mesh(foliageGeometry, foliageMaterial);
                 foliage.position.set(pos.x, 2.5 * scale, pos.z);
-            foliage.castShadow = true;
+                foliage.castShadow = true;
                 foliage.receiveShadow = true;
                 this.scene.add(foliage);
 
@@ -252,14 +316,75 @@ class Environment {
             }
         });
 
-        // Create bushes behind camera
+        // Create bushes around the perimeter
         const bushPositions = [
-            { x: -12, z: 18 },
-            { x: -8, z: 19 },
-            { x: -4, z: 18 },
-            { x: 4, z: 19 },
-            { x: 8, z: 18 },
-            { x: 12, z: 19 }
+            // Back row bushes
+            { x: -18, z: 19 },
+            { x: -16, z: 20 },
+            { x: -14, z: 19 },
+            { x: -11, z: 20 },
+            { x: -9, z: 19 },
+            { x: -6, z: 20 },
+            { x: -4, z: 19 },
+            { x: -1, z: 20 },
+            { x: 1, z: 19 },
+            { x: 3, z: 20 },
+            { x: 6, z: 19 },
+            { x: 8, z: 20 },
+            { x: 11, z: 19 },
+            { x: 13, z: 20 },
+            { x: 16, z: 19 },
+            { x: 18, z: 20 },
+            
+            // Left side bushes
+            { x: -23, z: 13 },
+            { x: -23, z: 11 },
+            { x: -23, z: 9 },
+            { x: -23, z: 6 },
+            { x: -23, z: 4 },
+            { x: -23, z: 1 },
+            { x: -23, z: -1 },
+            { x: -23, z: -4 },
+            { x: -23, z: -6 },
+            { x: -23, z: -9 },
+            { x: -23, z: -11 },
+            { x: -23, z: -13 },
+            { x: -23, z: -16 },
+            { x: -23, z: -19 },
+            
+            // Right side bushes
+            { x: 23, z: 13 },
+            { x: 23, z: 11 },
+            { x: 23, z: 9 },
+            { x: 23, z: 6 },
+            { x: 23, z: 4 },
+            { x: 23, z: 1 },
+            { x: 23, z: -1 },
+            { x: 23, z: -4 },
+            { x: 23, z: -6 },
+            { x: 23, z: -9 },
+            { x: 23, z: -11 },
+            { x: 23, z: -13 },
+            { x: 23, z: -16 },
+            { x: 23, z: -19 },
+            
+            // Front row bushes
+            { x: -18, z: -19 },
+            { x: -16, z: -20 },
+            { x: -14, z: -19 },
+            { x: -11, z: -20 },
+            { x: -9, z: -19 },
+            { x: -6, z: -20 },
+            { x: -4, z: -19 },
+            { x: -1, z: -20 },
+            { x: 1, z: -19 },
+            { x: 3, z: -20 },
+            { x: 6, z: -19 },
+            { x: 8, z: -20 },
+            { x: 11, z: -19 },
+            { x: 13, z: -20 },
+            { x: 16, z: -19 },
+            { x: 18, z: -20 }
         ];
 
         bushPositions.forEach(pos => {
@@ -435,66 +560,5 @@ class Environment {
         const e2Geometry = new THREE.BufferGeometry().setFromPoints(e2Points);
         const e2Line = new THREE.Line(e2Geometry, material);
         this.scene.add(e2Line);
-    }
-
-    createTableArrow() {
-        const material = new THREE.LineBasicMaterial({ 
-            color: 0x000000,
-            linewidth: 1
-        });
-
-        // Original arrow line
-        const arrowPoints = [
-            new THREE.Vector3(2, 0.01, 2.5),  // Start point
-            new THREE.Vector3(3.5, 0.01, 1),  // End point before arrow head
-        ];
-        const arrowGeometry = new THREE.BufferGeometry().setFromPoints(arrowPoints);
-        const arrowLine = new THREE.Line(arrowGeometry, material);
-        this.scene.add(arrowLine);
-
-        // Original arrow head - triangular shape
-        const headPoints = [
-            new THREE.Vector3(3.5, 0.01, 1),  // Base center
-            new THREE.Vector3(3.8, 0.01, 1),  // Tip
-            new THREE.Vector3(3.5, 0.01, 0.8),  // Bottom left
-            new THREE.Vector3(3.5, 0.01, 1),  // Back to base center
-            new THREE.Vector3(3.5, 0.01, 1.2),  // Bottom right
-            new THREE.Vector3(3.8, 0.01, 1)  // Back to tip
-        ];
-        const headGeometry = new THREE.BufferGeometry().setFromPoints(headPoints);
-        const headLine = new THREE.Line(headGeometry, material);
-        this.scene.add(headLine);
-
-        // New curved arrow to ABOUT ME board
-        const curvePoints = [];
-        const startX = -1.8;  // Starting near the first E
-        const startZ = 2.5;   // Starting at z=2.5
-        const endX = -4.5;    // Ending before the ABOUT ME board
-        const endZ = 1.5;     // Ending slightly before the board
-
-        // Create points for a smooth curve using quadratic Bezier
-        for (let i = 0; i <= 20; i++) {
-            const t = i / 20;
-            const x = startX + (endX - startX) * t;
-            const z = startZ + (endZ - startZ) * t * t;  // Quadratic curve
-            curvePoints.push(new THREE.Vector3(x, 0.01, z));
-        }
-
-        const curveGeometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
-        const curveLine = new THREE.Line(curveGeometry, material);
-        this.scene.add(curveLine);
-
-        // Arrow head for the curved arrow
-        const curveHeadPoints = [
-            new THREE.Vector3(endX, 0.01, endZ),  // Base center
-            new THREE.Vector3(endX - 0.3, 0.01, endZ),  // Tip
-            new THREE.Vector3(endX, 0.01, endZ - 0.2),  // Bottom left
-            new THREE.Vector3(endX, 0.01, endZ),  // Back to base center
-            new THREE.Vector3(endX, 0.01, endZ + 0.2),  // Bottom right
-            new THREE.Vector3(endX - 0.3, 0.01, endZ)  // Back to tip
-        ];
-        const curveHeadGeometry = new THREE.BufferGeometry().setFromPoints(curveHeadPoints);
-        const curveHeadLine = new THREE.Line(curveHeadGeometry, material);
-        this.scene.add(curveHeadLine);
     }
 }
