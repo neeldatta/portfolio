@@ -6,7 +6,6 @@ class InteractionController {
         this.navigationController = navigationController;
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
-        this.instructionsTimer = null;
         this.hasClickedScroll = false;
         
         this.init();
@@ -15,18 +14,6 @@ class InteractionController {
     init() {
         this.addClickHandlers();
         this.addHoverEffects();
-        this.startInstructionsTimer();
-    }
-
-    startInstructionsTimer() {
-        this.instructionsTimer = setTimeout(() => {
-            if (!this.hasClickedScroll) {
-                const instructions = document.getElementById('instructions');
-                if (instructions) {
-                    instructions.style.display = 'block';
-                }
-            }
-        }, 30000); // 30 seconds
     }
 
     addClickHandlers() {
@@ -94,7 +81,9 @@ class InteractionController {
             if (current.userData) {
                 if (current.userData.isDesk || 
                     current.userData.isScroll || 
-                    current.userData.isBottle) {
+                    current.userData.isBottle ||
+                    current.userData.isSign ||
+                    current.userData.isMug) {
                     return current;
                 }
             }
@@ -110,20 +99,22 @@ class InteractionController {
         if (userData.isDesk) {
             console.log('🪑 Clicked on desk - zooming in...');
             this.navigationController.zoomToDesk();
-            this.updateInstructions('Click the scroll to view portfolio • Press space to return to overview');
             
         } else if (userData.isScroll) {
             console.log('📜 Clicked on scroll - opening portfolio...');
             this.hasClickedScroll = true;
-            const instructions = document.getElementById('instructions');
-            if (instructions) {
-                instructions.style.display = 'none';
-            }
             UI.showPortfolio();
             
         } else if (userData.isBottle) {
             console.log('🍾 Clicked on bottle - opening contact...');
             UI.showContact();
+        } else if (userData.isSign) {
+            console.log('📝 Clicked on sign - opening about me...');
+            this.navigationController.zoomToAbout();
+            UI.showAbout();
+        } else if (userData.isMug) {
+            console.log('☕ Clicked on mug - opening mug panel...');
+            UI.showMug();
         }
     }
 
@@ -167,13 +158,6 @@ class InteractionController {
         };
         
         animate();
-    }
-
-    updateInstructions(text) {
-        const instructions = document.getElementById('instructions');
-        if (instructions) {
-            instructions.textContent = text;
-        }
     }
 
     update() {

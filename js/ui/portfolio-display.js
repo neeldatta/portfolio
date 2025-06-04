@@ -16,6 +16,32 @@ class UI {
         modal.style.display = 'block';
     }
 
+    static showAbout() {
+        const modal = document.getElementById('portfolioModal');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalBody.innerHTML = this.getAboutContent();
+        modal.style.display = 'block';
+    }
+
+    static showMug() {
+        const modal = document.getElementById('portfolioModal');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalBody.innerHTML = `
+            <div class="modal-header">
+                <h1>Mug</h1>
+                <p>Just a mug.</p>
+            </div>
+            <div class="modal-body">
+                <div class="section">
+                    <h2>Mug.</h2>
+                </div>
+            </div>
+        `;
+        modal.style.display = 'block';
+    }
+
     static closeModal() {
         const modal = document.getElementById('portfolioModal');
         modal.style.display = 'none';
@@ -144,6 +170,53 @@ class UI {
                     <h2>Response Time</h2>
                     <p>I typically respond to emails within 24-48 hours. For urgent matters, LinkedIn messages tend to get faster responses.</p>
                     <p>Looking forward to connecting! 🔥</p>
+                </div>
+            </div>
+        `;
+    }
+
+    static getAboutContent() {
+        return `
+            <div class="modal-header">
+                <h1>About Me</h1>
+                <p>The Story Behind the Code</p>
+            </div>
+            <div class="modal-body">
+                <div class="section">
+                    <h2>Who I Am</h2>
+                    <p>I'm a passionate full-stack developer with a love for creating immersive digital experiences. My journey in tech began with a curiosity about how things work, which evolved into a deep appreciation for the art of software development.</p>
+                </div>
+
+                <div class="section">
+                    <h2>My Journey</h2>
+                    <div class="project">
+                        <h3>🎓 Education</h3>
+                        <p>Computer Science graduate with a focus on web development and interactive media. Continuously learning and exploring new technologies.</p>
+                    </div>
+
+                    <div class="project">
+                        <h3>💼 Experience</h3>
+                        <p>Worked on diverse projects ranging from enterprise applications to creative interactive experiences. Specialized in building scalable web applications and immersive 3D experiences.</p>
+                    </div>
+
+                    <div class="project">
+                        <h3>🎯 Current Focus</h3>
+                        <p>Exploring the intersection of web development and 3D graphics, creating engaging user experiences that combine technical excellence with creative vision.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>My Approach</h2>
+                    <p><strong>Problem Solving:</strong> I believe in understanding problems deeply before crafting solutions</p>
+                    <p><strong>User-Centric:</strong> Every line of code should serve the end user's experience</p>
+                    <p><strong>Clean Code:</strong> Writing maintainable, well-documented code is a priority</p>
+                    <p><strong>Continuous Learning:</strong> Staying current with emerging technologies and best practices</p>
+                </div>
+
+                <div class="section">
+                    <h2>Beyond the Code</h2>
+                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge through technical writing and mentoring.</p>
+                    <p>I believe in the power of community and collaboration in the tech world, and I'm always excited to connect with fellow developers and creative technologists.</p>
                 </div>
             </div>
         `;

@@ -2,12 +2,14 @@ class Wildlife {
     constructor(scene) {
         this.scene = scene;
         this.campfireRadius = 3; // Minimum distance from campfire (0,0,0)
+        this.welcomeRadius = 4; // Minimum distance from welcome text
     }
 
-    // Helper function to check if position is too close to campfire
+    // Helper function to check if position is too close to campfire or welcome text
     isTooCloseToCampfire(x, z) {
-        const distance = Math.sqrt(x * x + z * z);
-        return distance < this.campfireRadius;
+        const distanceToCampfire = Math.sqrt(x * x + z * z);
+        const distanceToWelcome = Math.sqrt((x - 0) * (x - 0) + (z - 3) * (z - 3)); // Welcome text is at (0, 0, 3)
+        return distanceToCampfire < this.campfireRadius || distanceToWelcome < this.welcomeRadius;
     }
 
     create() {
@@ -24,8 +26,8 @@ class Wildlife {
             { capColor: 0xffff00, stemColor: 0xffffff }  // Yellow with white stem
         ];
 
-        // Create 15 mushrooms
-        for (let i = 0; i < 15; i++) {
+        // Create 8 mushrooms (reduced from 15)
+        for (let i = 0; i < 8; i++) {
             const type = mushroomTypes[Math.floor(Math.random() * mushroomTypes.length)];
             const mushroomGroup = new THREE.Group();
 
@@ -118,13 +120,13 @@ class Wildlife {
             { color: 0x006400, height: 0.25 } // Dark green
         ];
 
-        // Create many more small plants
-        for (let i = 0; i < 200; i++) {
+        // Create 300 small plants (increased from 200)
+        for (let i = 0; i < 300; i++) {
             const type = plantTypes[Math.floor(Math.random() * plantTypes.length)];
             const plantGroup = new THREE.Group();
 
-            // Create 3-5 blades of grass/leaves
-            const bladeCount = 3 + Math.floor(Math.random() * 3);
+            // Create 4-6 blades of grass/leaves (increased from 3-5)
+            const bladeCount = 4 + Math.floor(Math.random() * 3);
             for (let j = 0; j < bladeCount; j++) {
                 const bladeGeometry = new THREE.CylinderGeometry(0.01, 0.02, type.height, 4);
                 const bladeMaterial = new THREE.MeshLambertMaterial({ color: type.color });

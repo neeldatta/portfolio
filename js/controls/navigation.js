@@ -6,10 +6,11 @@ class NavigationController {
         this.mouseX = 0;
         this.mouseY = 0;
         this.targetPosition = { x: 0, y: 2, z: 8 };
-        this.currentView = 'overview'; // 'overview' or 'desk'
+        this.currentView = 'overview'; // 'overview', 'desk', or 'about'
         this.isTransitioning = false;
         
         this.init();
+        this.updateInstructions(); // Initial instructions update
     }
 
     init() {
@@ -63,12 +64,24 @@ class NavigationController {
 
     moveLeft() {
         if (this.isTransitioning) return;
-        this.targetPosition.x = Math.max(this.targetPosition.x - 0.5, -8);
+        this.targetPosition.x = Math.min(this.targetPosition.x + 0.5, 8);
     }
 
     moveRight() {
         if (this.isTransitioning) return;
-        this.targetPosition.x = Math.min(this.targetPosition.x + 0.5, 8);
+        this.targetPosition.x = Math.max(this.targetPosition.x - 0.5, -8);
+    }
+
+    updateInstructions() {
+        const instructions = document.getElementById('instructions');
+        if (instructions) {
+            if (this.currentView === 'overview') {
+                instructions.textContent = 'Look around with your arrow keys • Click on an object to explore';
+            } else {
+                instructions.textContent = 'Press Space to return to overview';
+            }
+            instructions.style.display = 'block';
+        }
     }
 
     zoomToDesk() {
@@ -77,11 +90,27 @@ class NavigationController {
         this.isTransitioning = true;
         this.currentView = 'desk';
         
-        // Target position focused on the desk
-        const deskTarget = { x: 4, y: 2.5, z: 2.5 };
+        // Target position focused on the desk with a more top-down view
+        const deskTarget = { x: 4, y: 3.5, z: 1.5 };  // Increased y and decreased z for more top-down angle
         
         this.animateCameraTo(deskTarget, () => {
             this.isTransitioning = false;
+            this.updateInstructions();
+        });
+    }
+
+    zoomToAbout() {
+        if (this.isTransitioning) return;
+        
+        this.isTransitioning = true;
+        this.currentView = 'about';
+        
+        // Target position focused on the sign
+        const aboutTarget = { x: -7, y: 2.5, z: 3 };
+        
+        this.animateCameraTo(aboutTarget, () => {
+            this.isTransitioning = false;
+            this.updateInstructions();
         });
     }
 
@@ -95,6 +124,7 @@ class NavigationController {
         
         this.animateCameraTo(overviewTarget, () => {
             this.isTransitioning = false;
+            this.updateInstructions();
         });
     }
 
@@ -138,15 +168,17 @@ class NavigationController {
             this.camera.position.y += (this.targetPosition.y - this.camera.position.y) * 0.05;
             this.camera.position.z += (this.targetPosition.z - this.camera.position.z) * 0.05;
             
-            // Mouse look effect
-            const mouseInfluence = this.currentView === 'desk' ? 1 : 3;
-            this.camera.position.x += (this.mouseX * mouseInfluence - this.camera.position.x + this.targetPosition.x) * 0.02;
+            // Mouse look effect - flipped the mouseX influence
+            const mouseInfluence = this.currentView === 'desk' || this.currentView === 'about' ? 1 : 3;
+            this.camera.position.x += (-this.mouseX * mouseInfluence - this.camera.position.x + this.targetPosition.x) * 0.02;  // Added negative sign to mouseX
             this.camera.position.y += (-this.mouseY * 1 + this.targetPosition.y - this.camera.position.y) * 0.02;
         }
         
         // Always look at appropriate target
         const lookTarget = this.currentView === 'desk' 
             ? new THREE.Vector3(4, 1, 0)  // Look at desk
+            : this.currentView === 'about'
+            ? new THREE.Vector3(-7, 1.5, 1) // Look at sign
             : new THREE.Vector3(0, 1, 0); // Look at campfire
             
         this.camera.lookAt(lookTarget);

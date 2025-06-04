@@ -15,6 +15,7 @@ class Environment {
         this.createStars();
         this.createWelcomeText();
         this.createTableArrow();
+        this.createPerimeterTrees();
     }
 
     createGround() {
@@ -340,13 +341,15 @@ class Environment {
             linewidth: 1
         });
 
+        const x = -0.5
+
         // W
         const wPoints = [
-            new THREE.Vector3(-3.5, 0.01, 3),
-            new THREE.Vector3(-3.2, 0.01, 3.5),
-            new THREE.Vector3(-2.9, 0.01, 3),
-            new THREE.Vector3(-2.6, 0.01, 3.5),
-            new THREE.Vector3(-2.3, 0.01, 3)
+            new THREE.Vector3(-3.5, 0.01, 3.5 + x),
+            new THREE.Vector3(-3.2, 0.01, 4+ x),
+            new THREE.Vector3(-2.9, 0.01, 3.5+ x),
+            new THREE.Vector3(-2.6, 0.01, 4+ x),
+            new THREE.Vector3(-2.3, 0.01, 3.5+ x)
         ];
         const wGeometry = new THREE.BufferGeometry().setFromPoints(wPoints);
         const wLine = new THREE.Line(wGeometry, material);
@@ -354,15 +357,15 @@ class Environment {
 
         // E
         const ePoints = [
-            new THREE.Vector3(-1.8, 0.01, 3),
-            new THREE.Vector3(-1.8, 0.01, 3.5),
-            new THREE.Vector3(-1.4, 0.01, 3.5),
-            new THREE.Vector3(-1.8, 0.01, 3.5),
-            new THREE.Vector3(-1.8, 0.01, 3.25),
-            new THREE.Vector3(-1.4, 0.01, 3.25),
-            new THREE.Vector3(-1.8, 0.01, 3.25),
-            new THREE.Vector3(-1.8, 0.01, 3),
-            new THREE.Vector3(-1.4, 0.01, 3)
+            new THREE.Vector3(-1.8, 0.01, 3.5+ x),
+            new THREE.Vector3(-1.8, 0.01, 4+ x),
+            new THREE.Vector3(-1.4, 0.01, 4+ x),
+            new THREE.Vector3(-1.8, 0.01, 4+ x),
+            new THREE.Vector3(-1.8, 0.01, 3.75+ x),
+            new THREE.Vector3(-1.4, 0.01, 3.75+ x),
+            new THREE.Vector3(-1.8, 0.01, 3.75+ x),
+            new THREE.Vector3(-1.8, 0.01, 3.5+ x),
+            new THREE.Vector3(-1.4, 0.01, 3.5+ x)
         ];
         const eGeometry = new THREE.BufferGeometry().setFromPoints(ePoints);
         const eLine = new THREE.Line(eGeometry, material);
@@ -370,9 +373,9 @@ class Environment {
 
         // L
         const lPoints = [
-            new THREE.Vector3(-1.0, 0.01, 3),
-            new THREE.Vector3(-1.0, 0.01, 3.5),
-            new THREE.Vector3(-0.6, 0.01, 3.5)
+            new THREE.Vector3(-1.0, 0.01, 3.5+ x),
+            new THREE.Vector3(-1.0, 0.01, 4+ x),
+            new THREE.Vector3(-0.6, 0.01, 4+ x)
         ];
         const lGeometry = new THREE.BufferGeometry().setFromPoints(lPoints);
         const lLine = new THREE.Line(lGeometry, material);
@@ -381,11 +384,11 @@ class Environment {
         // C
         const cPoints = [];
         for (let i = 0; i <= 8; i++) {
-            const angle = Math.PI/2 - Math.PI/8 + (i / 8) * Math.PI * 1.2;  // Subtracted π/8 (22.5 degrees) for a gentler clockwise rotation
+            const angle = Math.PI/2 - Math.PI/8 + (i / 8) * Math.PI * 1.2;
             cPoints.push(new THREE.Vector3(
                 0.1 + Math.cos(angle) * 0.25,
                 0.01,
-                3.25 + Math.sin(angle) * 0.25
+                (3.75 + Math.sin(angle) * 0.25) + x
             ));
         }
         const cGeometry = new THREE.BufferGeometry().setFromPoints(cPoints);
@@ -397,9 +400,9 @@ class Environment {
         for (let i = 0; i <= 16; i++) {
             const angle = (i / 16) * Math.PI * 2;
             oPoints.push(new THREE.Vector3(
-                0.9 + Math.cos(angle) * 0.25,  // Moved slightly right
+                0.9 + Math.cos(angle) * 0.25,
                 0.01,
-                3.25 + Math.sin(angle) * 0.25
+                (3.75 + Math.sin(angle) * 0.25) + x
             ));
         }
         const oGeometry = new THREE.BufferGeometry().setFromPoints(oPoints);
@@ -408,27 +411,39 @@ class Environment {
 
         // M
         const mPoints = [
-            new THREE.Vector3(1.4, 0.01, 3.5),
-            new THREE.Vector3(1.4, 0.01, 3),
-            new THREE.Vector3(1.7, 0.01, 3.25),
-            new THREE.Vector3(2.0, 0.01, 3),
-            new THREE.Vector3(2.0, 0.01, 3.5)
+            new THREE.Vector3(1.4, 0.01, 4+ x),
+            new THREE.Vector3(1.4, 0.01, 3.5+ x),
+            new THREE.Vector3(1.7, 0.01, 3.75+ x),
+            new THREE.Vector3(2.0, 0.01, 3.5+ x),
+            new THREE.Vector3(2.0, 0.01, 4+ x)
         ];
         const mGeometry = new THREE.BufferGeometry().setFromPoints(mPoints);
         const mLine = new THREE.Line(mGeometry, material);
         this.scene.add(mLine);
 
+        // Exclamation mark
+        const exclamationPoints = [
+            // Vertical line
+            new THREE.Vector3(2.3, 0.01, 3.5 + x),
+            new THREE.Vector3(2.3, 0.01, 4 + x),
+            // Dot
+            new THREE.Vector3(2.3, 0.01, 3.4 + x)
+        ];
+        const exclamationGeometry = new THREE.BufferGeometry().setFromPoints(exclamationPoints);
+        const exclamationLine = new THREE.Line(exclamationGeometry, material);
+        this.scene.add(exclamationLine);
+        
         // E
         const e2Points = [
-            new THREE.Vector3(2.6, 0.01, 3),
-            new THREE.Vector3(2.6, 0.01, 3.5),
-            new THREE.Vector3(3.0, 0.01, 3.5),
-            new THREE.Vector3(2.6, 0.01, 3.5),
-            new THREE.Vector3(2.6, 0.01, 3.25),
-            new THREE.Vector3(3.0, 0.01, 3.25),
-            new THREE.Vector3(2.6, 0.01, 3.25),
-            new THREE.Vector3(2.6, 0.01, 3),
-            new THREE.Vector3(3.0, 0.01, 3)
+            new THREE.Vector3(2.6, 0.01, 3.5 + x),
+            new THREE.Vector3(2.6, 0.01, 4 + x),
+            new THREE.Vector3(3.0, 0.01, 4 + x),
+            new THREE.Vector3(2.6, 0.01, 4 + x),
+            new THREE.Vector3(2.6, 0.01, 3.75 + x),
+            new THREE.Vector3(3.0, 0.01, 3.75 + x),
+            new THREE.Vector3(2.6, 0.01, 3.75 + x),
+            new THREE.Vector3(2.6, 0.01, 3.5 + x),
+            new THREE.Vector3(3.0, 0.01, 3.5 + x)
         ];
         const e2Geometry = new THREE.BufferGeometry().setFromPoints(e2Points);
         const e2Line = new THREE.Line(e2Geometry, material);
@@ -441,16 +456,16 @@ class Environment {
             linewidth: 1
         });
 
-        // Arrow line
+        // Original arrow line
         const arrowPoints = [
-            new THREE.Vector3(2, 0.01, 2),  // Start point
+            new THREE.Vector3(2, 0.01, 2.5),  // Start point
             new THREE.Vector3(3.5, 0.01, 1),  // End point before arrow head
         ];
         const arrowGeometry = new THREE.BufferGeometry().setFromPoints(arrowPoints);
         const arrowLine = new THREE.Line(arrowGeometry, material);
         this.scene.add(arrowLine);
 
-        // Arrow head - triangular shape
+        // Original arrow head - triangular shape
         const headPoints = [
             new THREE.Vector3(3.5, 0.01, 1),  // Base center
             new THREE.Vector3(3.8, 0.01, 1),  // Tip
@@ -462,5 +477,118 @@ class Environment {
         const headGeometry = new THREE.BufferGeometry().setFromPoints(headPoints);
         const headLine = new THREE.Line(headGeometry, material);
         this.scene.add(headLine);
+
+        // New curved arrow to ABOUT ME board
+        const curvePoints = [];
+        const startX = -1.8;  // Starting near the first E
+        const startZ = 2.5;   // Starting at z=2.5
+        const endX = -4.5;    // Ending before the ABOUT ME board
+        const endZ = 1.5;     // Ending slightly before the board
+
+        // Create points for a smooth curve using quadratic Bezier
+        for (let i = 0; i <= 20; i++) {
+            const t = i / 20;
+            const x = startX + (endX - startX) * t;
+            const z = startZ + (endZ - startZ) * t * t;  // Quadratic curve
+            curvePoints.push(new THREE.Vector3(x, 0.01, z));
+        }
+
+        const curveGeometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
+        const curveLine = new THREE.Line(curveGeometry, material);
+        this.scene.add(curveLine);
+
+        // Arrow head for the curved arrow
+        const curveHeadPoints = [
+            new THREE.Vector3(endX, 0.01, endZ),  // Base center
+            new THREE.Vector3(endX - 0.3, 0.01, endZ),  // Tip
+            new THREE.Vector3(endX, 0.01, endZ - 0.2),  // Bottom left
+            new THREE.Vector3(endX, 0.01, endZ),  // Back to base center
+            new THREE.Vector3(endX, 0.01, endZ + 0.2),  // Bottom right
+            new THREE.Vector3(endX - 0.3, 0.01, endZ)  // Back to tip
+        ];
+        const curveHeadGeometry = new THREE.BufferGeometry().setFromPoints(curveHeadPoints);
+        const curveHeadLine = new THREE.Line(curveHeadGeometry, material);
+        this.scene.add(curveHeadLine);
+    }
+
+    createPerimeterTrees() {
+        const treeCount = 16; // More trees than torches for denser coverage
+        const radius = 15; // Same radius as torches
+        const isConiferous = 0.7; // 70% chance of coniferous trees
+
+        for (let i = 0; i < treeCount; i++) {
+            const angle = (i / treeCount) * Math.PI * 2;
+            // Add some random variation to the radius and angle
+            const radiusVariation = radius + (Math.random() - 0.5) * 2;
+            const angleVariation = angle + (Math.random() - 0.5) * 0.2;
+            
+            const x = Math.cos(angleVariation) * radiusVariation;
+            const z = Math.sin(angleVariation) * radiusVariation;
+
+            // Create trunk
+            const trunkGeometry = new THREE.CylinderGeometry(0.2, 0.3, 2, 8);
+            const trunkMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x4d2926,
+                roughness: 0.9,
+                metalness: 0.1
+            });
+            const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
+            trunk.position.set(x, 1, z);
+            trunk.castShadow = true;
+            trunk.receiveShadow = true;
+            this.scene.add(trunk);
+
+            const scale = 1.2 + Math.random() * 0.3; // Random scale variation
+
+            if (Math.random() < isConiferous) {
+                // Create coniferous (spiky) tree with multiple layers
+                const foliageColors = [0x1a5a1a, 0x2d4a2d, 0x3d6a3d]; // Different shades of green
+                const foliageLayers = 3;
+
+                for (let i = 0; i < foliageLayers; i++) {
+                    const foliageGeometry = new THREE.ConeGeometry(
+                        1.5 * scale * (1 - i * 0.2),
+                        2 * scale * (1 - i * 0.1),
+                        8
+                    );
+                    const foliageMaterial = new THREE.MeshStandardMaterial({
+                        color: foliageColors[i % foliageColors.length],
+                        roughness: 0.8,
+                        metalness: 0.1
+                    });
+                    const foliage = new THREE.Mesh(foliageGeometry, foliageMaterial);
+                    foliage.position.set(x, 2 * scale + i * 0.8 * scale, z);
+                    foliage.castShadow = true;
+                    foliage.receiveShadow = true;
+                    this.scene.add(foliage);
+                }
+            } else {
+                // Create deciduous (round) tree
+                const foliageGeometry = new THREE.SphereGeometry(1.2 * scale, 8, 8);
+                const foliageMaterial = new THREE.MeshStandardMaterial({ 
+                    color: 0x2d4a2d,
+                    roughness: 0.8,
+                    metalness: 0.1
+                });
+                const foliage = new THREE.Mesh(foliageGeometry, foliageMaterial);
+                foliage.position.set(x, 2.5 * scale, z);
+                foliage.castShadow = true;
+                foliage.receiveShadow = true;
+                this.scene.add(foliage);
+
+                // Add a second, slightly smaller sphere for more natural look
+                const innerFoliageGeometry = new THREE.SphereGeometry(0.9 * scale, 8, 8);
+                const innerFoliageMaterial = new THREE.MeshStandardMaterial({ 
+                    color: 0x3d6a3d,
+                    roughness: 0.8,
+                    metalness: 0.1
+                });
+                const innerFoliage = new THREE.Mesh(innerFoliageGeometry, innerFoliageMaterial);
+                innerFoliage.position.set(x, 2.5 * scale, z);
+                innerFoliage.castShadow = true;
+                innerFoliage.receiveShadow = true;
+                this.scene.add(innerFoliage);
+            }
+        }
     }
 }
