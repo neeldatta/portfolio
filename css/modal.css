@@ -49,6 +49,9 @@
     text-align: center;
     border-radius: 12px 12px 0 0;
     border-bottom: 2px solid #654321;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
 }
 
 .modal-header h1 {
@@ -64,7 +67,7 @@
 
 .modal-body {
     padding: 30px;
-    color: #2F1B14;
+    color: #000000;
     line-height: 1.6;
 }
 
@@ -123,7 +126,7 @@
 
 .close-modal {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 20px;
     background: none;
     border: none;
@@ -136,7 +139,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .close-modal:hover {

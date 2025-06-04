@@ -45,18 +45,19 @@ class UI {
         }, 50);
     }
 
-    static showMug() {
+    static show() {
         const modal = document.getElementById('portfolioModal');
         const modalBody = document.getElementById('modalBody');
         
         modalBody.innerHTML = `
             <div class="modal-header">
+                <button class="close-modal" onclick="UI.closeModal()">&times;</button>
                 <h1>Mug</h1>
                 <p>Just a mug.</p>
             </div>
             <div class="modal-body">
                 <div class="section">
-                    <h2>Mug.</h2>
+                    <h2>It's literally just a mug.</h2>
                 </div>
             </div>
         `;
@@ -76,15 +77,16 @@ class UI {
         
         // Wait for fade out animation to complete before hiding
         setTimeout(() => {
-            modal.style.display = 'none';
+        modal.style.display = 'none';
         }, 500);
     }
 
     static getPortfolioContent() {
         return `
             <div class="modal-header">
+                <button class="close-modal" onclick="UI.closeModal()">&times;</button>
                 <h1>My Portfolio</h1>
-                <p>Engineering Solutions from Data to Deployment</p>
+                <p>Scroll of Prior Projects</p>
             </div>
             <div class="modal-body">
                 <div class="section">
@@ -93,60 +95,54 @@ class UI {
                     <div class="project">
                         <h3>Energy Data Analytics Platform @ Abjayon</h3>
                         <p>End-to-end data pipeline processing 5TB+ daily meter data with ML-powered energy disaggregation achieving 84% NILM accuracy and $2M annual savings. Architected using Kafka, Spark Streaming, and MongoDB with 99.9% uptime. Improved LSTM-based energy theft detection by 35%.</p>
-                        <a href="#" class="project-link">Technical Deep Dive</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">Architecture Docs</a>
+                        <a href="https://www.impresa.ai" class="project-link">Learn More</a>
                     </div>
-    
-                    <div class="project">
-                        <h3>EQTY LYFE - Full-Stack Fintech Platform</h3>
-                        <p>Architected and developed complete home equity platform managing entire SDLC. Built secure mortgage application flow processing thousands of applications monthly with proprietary underwriting, reducing overhead by 45%. Led cross-functional team of 3 engineers with 30% faster development cycles.</p>
-                        <a href="#" class="project-link">Live Platform</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">Case Study</a>
-                    </div>
-    
+
                     <div class="project">
                         <h3>Reusable Spark ETL Framework</h3>
-                        <p>Designed and built Python/Spark framework for energy data transformations, reducing development time by 60% across multiple utility clients. Framework handles data validation, transformations, and MongoDB integration with built-in monitoring and error handling.</p>
-                        <a href="#" class="project-link">Framework Docs</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">GitHub</a>
+                        <p>Designed and built PySpark+Kafka+Mongo framework for energy data transformations, reducing development time by 60% across multiple utility clients. Framework handles real-time streaming with Kafka, as well as data validation, transformations, and MongoDB integration with built-in monitoring and error handling.</p>
+                        <a href="https://www.abjayon.com" class="project-link">Learn More</a>
                     </div>
+
+                    <div class="project">
+                        <h3>EQTY LYFE - Full-Stack Real Estate Platform</h3>
+                        <p>Architected and developed complete home equity platform managing entire SDLC. Built secure mortgage application flow processing thousands of applications monthly with proprietary underwriting, reducing overhead by 45%. Led cross-functional team of 3 engineers with 30% faster development cycles.</p>
+                        <a href="https://www.eqtylyfe.com" class="project-link">Live Platform: EqtyLyfe</a>
+                    </div>
+
     
                     <div class="project">
                         <h3>ML Credit Risk Assessment System @ Torpago</h3>
-                        <p>Developed automated underwriting system using ensemble ML models (logistic regression, decision trees) achieving 85% prediction accuracy. Automated 70% of underwriting workflows and increased qualified applicant throughput by 3x. Built with Go, Echo framework, and PostgreSQL backend.</p>
-                        <a href="#" class="project-link">Model Performance</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">Technical Report</a>
+                        <p>Developed automated underwriting system using ensemble ML models (logistic regression, decision trees) achieving 85% default prediction accuracy. Automated 70% of underwriting workflows and increased qualified applicant throughput by 3x. Built with Go, Echo framework, and PostgreSQL backend.</p>
+                        <a href="https://www.torpago.com" class="project-link">Learn More</a>
                     </div>
-    
+
                     <div class="project">
                         <h3>EEG Brain-Computer Interface</h3>
-                        <p>Engineered brain-computer interface using OpenBCI hardware and custom signal processing neural networks. Achieved 85% accuracy in thought pattern classification for gaming controls using TensorFlow and advanced signal processing techniques.</p>
-                        <a href="#" class="project-link">Demo Video</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">Research Paper</a>
+                        <p>Built a brain-computer interface using OpenBCI hardware and custom signal processing neural networks. Achieved 85% accuracy in thought pattern classification for gaming controls using TensorFlow and advanced signal processing techniques.</p>
+                        <a href="https://github.com/neeldatta/Project-T2B-Think2Blink" class="project-link"> View Project</a>
                     </div>
-    
+
                     <div class="project">
                         <h3>Intelligent NLP Query Matching Tool @ Sunstone Secure</h3>
                         <p>Developed NLP tool with web-scraping capabilities using Python NLTK to match and score queries with webpage text blocks. Achieved 95% query matching accuracy and automated data collection process, reducing manual effort by 80%.</p>
-                        <a href="#" class="project-link">View Project</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">Algorithm Details</a>
+                        <a href="https://github.com/neeldatta/DocSim-NLTK-Project" class="project-link"> View Project</a>
                     </div>
-    
+
                     <div class="project">
                         <h3>Bear Maps - Geospatial Navigation System</h3>
                         <p>Google Maps-like application implementing k-d tree and extrinsic Priority Queue data structures from scratch. Incorporated A* pathfinding algorithm for optimal route calculation with real-time mapping capabilities.</p>
-                        <a href="#" class="project-link">Live Demo</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">GitHub</a>
+                        <a href="https://github.com/neeldatta/CS61B-Project-2-BearMaps" class="project-link"> View Project</a>
                     </div>
-    
+
                     <div class="project">
                         <h3>Automotive Sales Prediction Analytics</h3>
                         <p>Performed comprehensive EDA on US Bureau of Transportation Statistics dataset. Used GLMs alongside nonparametric decision tree regressors to explore feature correlations and their impact on automotive sales forecasting.</p>
                         <a href="#" class="project-link">Analysis Report</a>
-                        <a href="#" class="project-link" style="margin-left: 10px;">Jupyter Notebook</a>
+                        <a href="#" class="project-link">View Project</a>
                     </div>
                 </div>
-    
+
                 <div class="section">
                     <h2>Technical Skills</h2>
                     <div class="skills-grid">
@@ -179,12 +175,13 @@ class UI {
     static getContactContent() {
         return `
             <div class="modal-header">
-                <h1>Message in a Bottle</h1>
-                <p>Let's Start a Conversation</p>
+                <button class="close-modal" onclick="UI.closeModal()">&times;</button>
+                <h1>Contact Me</h1>
+                <p>Message in a Bottle</p>
             </div>
             <div class="modal-body">
                 <div class="section">
-                    <h2>Get In Touch</h2>
+                    <h2>Let's Get In Touch!</h2>
                     <p>Ready to start a conversation? Whether you're looking to collaborate on a project, discuss opportunities, or just want to chat about technology and creative coding, I'd love to hear from you.</p>
                 </div>
 
@@ -194,32 +191,26 @@ class UI {
                     <div class="project">
                         <h3>📧 Email</h3>
                         <p>The best way to reach me for detailed discussions or project inquiries.</p>
-                        <a href="mailto:your.email@example.com" class="project-link">Send Email</a>
+                        <a href="mailto:neeldatta@berkeley.edu" class="project-link">Send Email</a>
                     </div>
 
                     <div class="project">
                         <h3>💼 LinkedIn</h3>
                         <p>Let's connect professionally and expand our networks.</p>
-                        <a href="https://linkedin.com/in/yourprofile" class="project-link">Connect on LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/neelndatta/" class="project-link">Connect on LinkedIn</a>
                     </div>
 
                     <div class="project">
                         <h3>🐙 GitHub</h3>
                         <p>Check out my code, contribute to projects, or start a technical discussion.</p>
-                        <a href="https://github.com/yourusername" class="project-link">View GitHub Profile</a>
+                        <a href="https://github.com/neeldatta" class="project-link">View GitHub Profile</a>
                     </div>
 
-                    <div class="project">
-                        <h3>🐦 Twitter</h3>
-                        <p>Follow my thoughts on web development, 3D graphics, and creative coding.</p>
-                        <a href="https://twitter.com/yourusername" class="project-link">Follow on Twitter</a>
-                    </div>
                 </div>
 
                 <div class="section">
                     <h2>What I'm Looking For</h2>
                     <p><strong>Collaboration Opportunities:</strong> Interesting projects that combine creativity with technology</p>
-                    <p><strong>Speaking Engagements:</strong> Talks about Three.js, creative web development, or immersive experiences</p>
                     <p><strong>Open Source:</strong> Contributing to projects that make the web more interactive and engaging</p>
                     <p><strong>Networking:</strong> Meeting fellow developers, designers, and creative technologists</p>
                 </div>
@@ -227,56 +218,97 @@ class UI {
                 <div class="section">
                     <h2>Response Time</h2>
                     <p>I typically respond to emails within 24-48 hours. For urgent matters, LinkedIn messages tend to get faster responses.</p>
-                    <p>Looking forward to connecting! 🔥</p>
+                    <p>Looking forward to connecting!</p>
                 </div>
             </div>
         `;
     }
 
+    // <div class="project">
+    //                     <h3>🐦 Twitter</h3>
+    //                     <p>Follow my thoughts on web development, 3D graphics, and creative coding.</p>
+    //                     <a href="https://twitter.com/yourusername" class="project-link">Follow on Twitter</a>
+    //                 </div>
+
     static getAboutContent() {
         return `
             <div class="modal-header">
+                <button class="close-modal" onclick="UI.closeModal()">&times;</button>
                 <h1>About Me</h1>
-                <p>The Story Behind the Code</p>
+                <p>Getting to know the person behind the code</p>
             </div>
             <div class="modal-body">
-                <div class="section">
-                    <h2>Who I Am</h2>
-                    <p>I'm a passionate full-stack developer with a love for creating immersive digital experiences. My journey in tech began with a curiosity about how things work, which evolved into a deep appreciation for the art of software development.</p>
-                </div>
-
-                <div class="section">
-                    <h2>My Journey</h2>
-                    <div class="project">
-                        <h3>🎓 Education</h3>
-                        <p>Computer Science graduate with a focus on web development and interactive media. Continuously learning and exploring new technologies.</p>
-                    </div>
-
-                    <div class="project">
-                        <h3>💼 Experience</h3>
-                        <p>Worked on diverse projects ranging from enterprise applications to creative interactive experiences. Specialized in building scalable web applications and immersive 3D experiences.</p>
-                    </div>
-
-                    <div class="project">
-                        <h3>🎯 Current Focus</h3>
-                        <p>Exploring the intersection of web development and 3D graphics, creating engaging user experiences that combine technical excellence with creative vision.</p>
+                <div class="text-image-block">
+                    <img src="img/neel.png" alt="Me at work" class="block-image left">
+                    <div class="text-content">
+                        <p>I'm a software engineer who fell in love with solving complex problems through code. My journey started at UC Berkeley studying Data Science and Cognitive Science, where I discovered my passion for building systems that can process massive amounts of data and extract meaningful insights. There's something incredibly satisfying about architecting a pipeline that handles 5TB of data daily and just works.</p>
+                        
+                       
                     </div>
                 </div>
-
-                <div class="section">
-                    <h2>My Approach</h2>
-                    <p><strong>Problem Solving:</strong> I believe in understanding problems deeply before crafting solutions</p>
-                    <p><strong>User-Centric:</strong> Every line of code should serve the end user's experience</p>
-                    <p><strong>Clean Code:</strong> Writing maintainable, well-documented code is a priority</p>
-                    <p><strong>Continuous Learning:</strong> Staying current with emerging technologies and best practices</p>
-                </div>
-
-                <div class="section">
-                    <h2>Beyond the Code</h2>
-                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge through technical writing and mentoring.</p>
-                    <p>I believe in the power of community and collaboration in the tech world, and I'm always excited to connect with fellow developers and creative technologists.</p>
+                
+                <div class="text-image-block reverse">
+                    <img src="img/turfin.jpg" alt="Me outside work" class="block-image right">
+                    <div class="text-content">
+                        <p>When I'm not deep in Spark jobs or debugging Kafka streams, I'm probably tinkering with some new tech project. I built a brain-computer interface that lets you control games with your thoughts (85% accuracy, not bad!), and I'm always exploring the intersection of web development and 3D graphics - like this campfire experience you're currently in.</p>
+                        
+                        
+                    </div>
                 </div>
             </div>
+            
+            <style>
+                .text-image-block {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-bottom: 40px;
+                    gap: 30px;
+                }
+                
+                .text-image-block.reverse {
+                    flex-direction: row-reverse;
+                }
+                
+                .block-image {
+                    width: 200px;
+                    height: 250px;
+                    object-fit: cover;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                    flex-shrink: 0;
+                }
+                
+                .text-content {
+                    flex: 1;
+                }
+                
+                .text-content p {
+                    color: #000000;
+                    line-height: 1.7;
+                    margin-bottom: 20px;
+                    font-size: 16px;
+                }
+                
+                .modal-body {
+                    padding: 30px;
+                    max-height: 70vh;
+                    overflow-y: auto;
+                }
+                
+                @media (max-width: 768px) {
+                    .text-image-block,
+                    .text-image-block.reverse {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                    
+                    .block-image {
+                        width: 180px;
+                        height: 220px;
+                        margin: 0 auto 20px auto;
+                    }
+                }
+            </style>
         `;
     }
 

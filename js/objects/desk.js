@@ -10,6 +10,7 @@ class Desk {
     create() {
         this.createDesk();
         this.createInteractiveObjects();
+        this.createDeskSign();
     }
 
     createDesk() {
@@ -107,7 +108,7 @@ class Desk {
         context.textAlign = 'center';
         context.textBaseline = 'middle';
         context.font = 'bold 60px Honoria';
-        context.fillText('PROJECTS', canvas.width/2, canvas.height/2);
+        context.fillText('Projects', canvas.width/2, canvas.height/2);
 
         // Create plane for text
         const textGeometry = new THREE.PlaneGeometry(1.5, 0.4);
@@ -271,5 +272,92 @@ class Desk {
         textMesh.rotation.x = -Math.PI / 2;  // Lay flat on table
         
         this.desk.add(textMesh);
+    }
+
+    createDeskSign() {
+        const signGroup = new THREE.Group();
+        
+        // Sign post
+        const postGeometry = new THREE.CylinderGeometry(0.08, 0.1, 1.8, 8);
+        const postMaterial = new THREE.MeshLambertMaterial({
+            color: 0x8B4513,
+            roughness: 0.8
+        });
+        const post = new THREE.Mesh(postGeometry, postMaterial);
+        post.position.set(0, 0.9, 0);
+        signGroup.add(post);
+        
+        // Create canvas for text
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 256;
+        const context = canvas.getContext('2d');
+        
+        // Draw wooden background
+        context.fillStyle = '#A0522D';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Add some wood grain effect
+        context.strokeStyle = '#8B4513';
+        context.lineWidth = 2;
+        for(let i = 0; i < 20; i++) {
+            context.beginPath();
+            context.moveTo(0, i * 20);
+            context.lineTo(canvas.width, i * 20 + Math.random() * 10);
+            context.stroke();
+        }
+        
+        // Draw the text
+        context.fillStyle = '#4a2c2a';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.font = 'bold 90px Honoria';
+        context.fillText('PROJECTS  ', canvas.width/2, canvas.height/2);
+
+        // Create the board group
+        const boardGroup = new THREE.Group();
+        
+        // Main rectangular part of the board
+        const boardGeometry = new THREE.BoxGeometry(1.2, 0.6, 0.1);
+        const boardMaterial = new THREE.MeshLambertMaterial({ 
+            map: new THREE.CanvasTexture(canvas),
+            roughness: 0.8
+        });
+        const board = new THREE.Mesh(boardGeometry, boardMaterial);
+        board.position.set(-0.6, 0, 0);
+        board.castShadow = true;
+        boardGroup.add(board);
+
+        // Arrow point
+        const arrowShape = new THREE.Shape();
+        arrowShape.moveTo(0, 0.3);
+        arrowShape.lineTo(-0.4, 0);
+        arrowShape.lineTo(0, -0.3);
+        arrowShape.closePath();
+
+        const arrowGeometry = new THREE.ExtrudeGeometry(arrowShape, {
+            depth: 0.1,
+            bevelEnabled: false
+        });
+        const arrow = new THREE.Mesh(arrowGeometry, boardMaterial);
+        arrow.position.set(-1.2, 0, 0);
+        arrow.castShadow = true;
+        boardGroup.add(arrow);
+
+        // Position the entire board group
+        boardGroup.position.set(0, 1.5, 0);
+        
+        
+        signGroup.add(boardGroup);
+        
+        // Position the sign group to the right of the desk
+        signGroup.position.set(7, 0, 0.75);
+        signGroup.rotation.y = -Math.PI / 4.5; // Face towards the desk
+        signGroup.userData = {
+            isSign: true,
+            isDesk: true // Add isDesk to trigger desk zoom on click
+        };
+        
+        this.scene.add(signGroup);
     }
 }

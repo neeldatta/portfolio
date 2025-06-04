@@ -127,7 +127,7 @@ class InteractionController {
             UI.showAbout();
         } else if (userData.isMug) {
             console.log('☕ Clicked on mug - opening mug panel...');
-            UI.showMug();
+            UI.show();
         } else if (userData.isCampfire) {
             console.log('🔥 Clicked on campfire - zooming in...');
             // First zoom to campfire

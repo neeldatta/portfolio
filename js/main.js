@@ -33,6 +33,18 @@ class CampfirePortfolio {
             const campfire = new Campfire(this.scene);
             campfire.create();
 
+            // Create anvil
+            const anvil = new Anvil(this.scene);
+            anvil.create();
+
+            // Create sword
+            const sword = new Sword(this.scene);
+            sword.create();
+
+            // Create chicken
+            const chicken = new Chicken(this.scene);
+            chicken.create();
+
             // Create desk
             const desk = new Desk(this.scene);
             desk.create();
@@ -172,6 +184,18 @@ class CampfirePortfolio {
                     );
                     child.userData.life = Math.random() * 2 + 1;
                     child.material.color.setHSL(0.1 - Math.random() * 0.1, 1, 0.5 + Math.random() * 0.3);
+                }
+            }
+
+            // Update chicken
+            if (child.userData.isChicken) {
+                child.userData.time += child.userData.bobSpeed;
+                child.position.y = child.userData.originalY + Math.sin(child.userData.time) * 0.05;
+                
+                // Occasional head movement
+                if (Math.sin(child.userData.time * 2) > 0.8) {
+                    const head = child.children[1]; // Head is the second child
+                    head.rotation.y = Math.sin(child.userData.time * 3) * 0.2;
                 }
             }
 
