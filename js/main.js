@@ -87,7 +87,7 @@ class CampfirePortfolio {
             if (this.isMusicPlaying) {
                 this.music.pause();
                 musicButton.classList.remove('playing');
-                musicIcon.textContent = '♫̶'; // Crossed out music note
+                musicIcon.textContent = 'x'; // Crossed out music note
             } else {
                 this.music.play();
                 musicButton.classList.add('playing');
