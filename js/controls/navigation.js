@@ -16,6 +16,7 @@ class NavigationController {
     init() {
         this.addMouseControls();
         this.addKeyboardControls();
+        this.addInstructionsClick();
     }
 
     addMouseControls() {
@@ -23,6 +24,17 @@ class NavigationController {
             this.mouseX = (event.clientX / window.innerWidth) * 2 - 1;
             this.mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
         });
+    }
+
+    addInstructionsClick() {
+        const instructions = document.getElementById('instructions');
+        if (instructions) {
+            instructions.addEventListener('click', () => {
+                if (this.currentView !== 'overview') {
+                    this.resetToOverview();
+                }
+            });
+        }
     }
 
     addKeyboardControls() {
@@ -45,8 +57,11 @@ class NavigationController {
                     this.moveRight();
                     break;
                 case 'Space':
+                case 'Escape':
                     event.preventDefault();
-                    this.resetToOverview();
+                    if (this.currentView !== 'overview') {
+                        this.resetToOverview();
+                    }
                     break;
             }
         });

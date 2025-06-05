@@ -95,51 +95,46 @@ class UI {
                     <div class="project">
                         <h3>Energy Data Analytics Platform @ Abjayon</h3>
                         <p>End-to-end data pipeline processing 5TB+ daily meter data with ML-powered energy disaggregation achieving 84% NILM accuracy and $2M annual savings. Architected using Kafka, Spark Streaming, and MongoDB with 99.9% uptime. Improved LSTM-based energy theft detection by 35%.</p>
-                        <a href="https://www.impresa.ai" class="project-link">Learn More</a>
+                        <a href="https://www.impresa.ai" class="project-link" target="_blank" rel="noopener noreferrer">Learn More</a>
                     </div>
 
                     <div class="project">
                         <h3>Reusable Spark ETL Framework</h3>
                         <p>Designed and built PySpark+Kafka+Mongo framework for energy data transformations, reducing development time by 60% across multiple utility clients. Framework handles real-time streaming with Kafka, as well as data validation, transformations, and MongoDB integration with built-in monitoring and error handling.</p>
-                        <a href="https://www.abjayon.com" class="project-link">Learn More</a>
+                        <a href="https://www.abjayon.com" class="project-link" target="_blank" rel="noopener noreferrer">Learn More</a>
                     </div>
 
                     <div class="project">
                         <h3>EQTY LYFE - Full-Stack Real Estate Platform</h3>
-                        <p>Architected and developed complete home equity platform managing entire SDLC. Built secure mortgage application flow processing thousands of applications monthly with proprietary underwriting, reducing overhead by 45%. Led cross-functional team of 3 engineers with 30% faster development cycles.</p>
-                        <a href="https://www.eqtylyfe.com" class="project-link">Live Platform: EqtyLyfe</a>
+                        <p>Architected and developed complete home equity investment platform, managing entire SDLC. Built secure mortgage application flow processing thousands of applications monthly with proprietary underwriting, reducing overhead by 45%. Led cross-functional team of 3 engineers with 30% faster development cycles.</p>
+                        <a href="https://www.eqtylyfe.com" class="project-link" target="_blank" rel="noopener noreferrer">Live Platform: EqtyLyfe</a>
                     </div>
 
     
                     <div class="project">
                         <h3>ML Credit Risk Assessment System @ Torpago</h3>
                         <p>Developed automated underwriting system using ensemble ML models (logistic regression, decision trees) achieving 85% default prediction accuracy. Automated 70% of underwriting workflows and increased qualified applicant throughput by 3x. Built with Go, Echo framework, and PostgreSQL backend.</p>
-                        <a href="https://www.torpago.com" class="project-link">Learn More</a>
+                        <a href="https://www.torpago.com" class="project-link" target="_blank" rel="noopener noreferrer">Learn More</a>
                     </div>
 
-                    <div class="project">
-                        <h3>EEG Brain-Computer Interface</h3>
-                        <p>Built a brain-computer interface using OpenBCI hardware and custom signal processing neural networks. Achieved 85% accuracy in thought pattern classification for gaming controls using TensorFlow and advanced signal processing techniques.</p>
-                        <a href="https://github.com/neeldatta/Project-T2B-Think2Blink" class="project-link"> View Project</a>
-                    </div>
 
                     <div class="project">
                         <h3>Intelligent NLP Query Matching Tool @ Sunstone Secure</h3>
                         <p>Developed NLP tool with web-scraping capabilities using Python NLTK to match and score queries with webpage text blocks. Achieved 95% query matching accuracy and automated data collection process, reducing manual effort by 80%.</p>
-                        <a href="https://github.com/neeldatta/DocSim-NLTK-Project" class="project-link"> View Project</a>
+                        <a href="https://github.com/neeldatta/DocSim-NLTK-Project" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
                     </div>
 
                     <div class="project">
                         <h3>Bear Maps - Geospatial Navigation System</h3>
                         <p>Google Maps-like application implementing k-d tree and extrinsic Priority Queue data structures from scratch. Incorporated A* pathfinding algorithm for optimal route calculation with real-time mapping capabilities.</p>
-                        <a href="https://github.com/neeldatta/CS61B-Project-2-BearMaps" class="project-link"> View Project</a>
+                        <a href="https://github.com/neeldatta/CS61B-Project-2-BearMaps" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
                     </div>
 
                     <div class="project">
                         <h3>Automotive Sales Prediction Analytics</h3>
                         <p>Performed comprehensive EDA on US Bureau of Transportation Statistics dataset. Used GLMs alongside nonparametric decision tree regressors to explore feature correlations and their impact on automotive sales forecasting.</p>
-                        <a href="#" class="project-link">Analysis Report</a>
-                        <a href="#" class="project-link">View Project</a>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">Analysis Report</a>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
                     </div>
                 </div>
 
@@ -191,19 +186,19 @@ class UI {
                     <div class="project">
                         <h3>📧 Email</h3>
                         <p>The best way to reach me for detailed discussions or project inquiries.</p>
-                        <a href="mailto:neeldatta@berkeley.edu" class="project-link">Send Email</a>
+                        <a href="mailto:neeldatta@berkeley.edu" class="project-link" target="_blank" rel="noopener noreferrer">Send Email</a>
                     </div>
 
                     <div class="project">
                         <h3>💼 LinkedIn</h3>
                         <p>Let's connect professionally and expand our networks.</p>
-                        <a href="https://www.linkedin.com/in/neelndatta/" class="project-link">Connect on LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/neelndatta/" class="project-link" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
                     </div>
 
                     <div class="project">
                         <h3>🐙 GitHub</h3>
                         <p>Check out my code, contribute to projects, or start a technical discussion.</p>
-                        <a href="https://github.com/neeldatta" class="project-link">View GitHub Profile</a>
+                        <a href="https://github.com/neeldatta" class="project-link" target="_blank" rel="noopener noreferrer">View GitHub Profile</a>
                     </div>
 
                 </div>
@@ -241,7 +236,15 @@ class UI {
                 <div class="text-image-block">
                     <img src="img/neeldattac.jpeg" alt="Me at work" class="block-image left">
                     <div class="text-content">
-                        <p>I'm a software engineer who fell in love with solving complex problems through code. My journey started at UC Berkeley studying Data Science and Cognitive Science, where I discovered my passion for building systems that can process massive amounts of data and extract meaningful insights. There's something incredibly satisfying about architecting a pipeline that handles 5TB of data daily and just works.</p>
+                        <p>I'm a software engineer who fell in love with solving complex challenges through code. My journey started at UC Berkeley studying Data Science and Cognitive Science, 
+                        where I discovered my passion for the interesections of human behavior and technology; today, I find that I've applied this knowledge developing streamlined user experiences
+                        and robust machine learning models/pipelines. There's something incredibly satisfying about architecting a pipeline that handles 5TB of data daily from across millions of end 
+                        users and then feeds it into models to relay crucial insights back to them.
+                        I've also been heavily involved in performing on site techincal demonstrations to clients, 
+                        locking down crucial deals and always being ready to answer the make-it-or-break-it questions that users want to know.
+                        Being a peoples person at my core, I've also spent time teaching others and getting them excited about the topics which I find so fascinating myself; I've helped develop 
+                        scripts for the new member education program at Neurotech@Berkeley, as well as teach fundamental concepts of machine learning and data science as a TA @ The Coding School. 
+                        </p>
                         
                        
                     </div>
@@ -250,7 +253,8 @@ class UI {
                 <div class="text-image-block reverse">
                     <img src="img/turfin.jpg" alt="Me outside work" class="block-image right">
                     <div class="text-content">
-                        <p>When I'm not deep in Spark jobs or debugging Kafka streams, I'm probably tinkering with some new tech project. I built a brain-computer interface that lets you control games with your thoughts (85% accuracy, not bad!), and I'm always exploring the intersection of web development and 3D graphics - like this campfire experience you're currently in.</p>
+                        <p>When I'm not deep in Spark jobs or debugging an issue in Airflow, I'm probably at a TURF dancing event or working on a design project. 
+                        I'm always exploring the intersection of web design and 3D graphics - like this campfire experience you're currently in.</p>
                         
                         
                     </div>

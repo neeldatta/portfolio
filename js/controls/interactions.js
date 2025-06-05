@@ -7,6 +7,7 @@ class InteractionController {
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
         this.hasClickedScroll = false;
+        this.sceneStartTime = null;
         
         this.init();
     }
@@ -129,23 +130,15 @@ class InteractionController {
             console.log('☕ Clicked on mug - opening mug panel...');
             UI.show();
         } else if (userData.isCampfire) {
+            // Check if 5 seconds have passed since scene start
+            if (!this.sceneStartTime || Date.now() - this.sceneStartTime < 5000) {
+                console.log('⏳ Please wait a moment before zooming to campfire...');
+                return;
+            }
+            
             console.log('🔥 Clicked on campfire - zooming in...');
             // First zoom to campfire
             this.navigationController.zoomToCampfire();
-            
-            // Comment out the slider functionality
-            /*
-            // Then show controls after a short delay to allow zoom to complete
-            setTimeout(() => {
-                // Find the campfire instance
-                const campfire = this.scene.children.find(
-                    child => child.userData && child.userData.isCampfire
-                );
-                if (campfire) {
-                    UI.showCampfireControls(campfire);
-                }
-            }, 1000); // Wait for 1 second to allow zoom animation to complete
-            */
         }
     }
 
@@ -193,5 +186,9 @@ class InteractionController {
 
     update() {
         // Any per-frame interaction updates can go here
+    }
+
+    setSceneStartTime() {
+        this.sceneStartTime = Date.now();
     }
 }

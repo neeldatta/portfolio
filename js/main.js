@@ -153,6 +153,11 @@ class CampfirePortfolio {
             instructions.style.display = 'block';
         }
         
+        // Set scene start time for interaction controller
+        if (this.interactionController) {
+            this.interactionController.setSceneStartTime();
+        }
+        
         // Remove loading screen after fade
         setTimeout(() => {
             loadingScreen.style.display = 'none';
