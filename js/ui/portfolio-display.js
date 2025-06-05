@@ -93,15 +93,15 @@ class UI {
                     <h2>Featured Projects</h2>
                     
                     <div class="project">
-                        <h3>Energy Data Analytics Platform @ Abjayon</h3>
+                        <h3>Energy Data Analytics Platform @ Impresa AI</h3>
                         <p>End-to-end data pipeline processing 5TB+ daily meter data with ML-powered energy disaggregation achieving 84% NILM accuracy and $2M annual savings. Architected using Kafka, Spark Streaming, and MongoDB with 99.9% uptime. Improved LSTM-based energy theft detection by 35%.</p>
-                        <a href="https://www.impresa.ai" class="project-link" target="_blank" rel="noopener noreferrer">Learn More</a>
+                        <a href="https://www.impresa.ai/platforms/" class="project-link" target="_blank" rel="noopener noreferrer">Learn More</a>
                     </div>
 
                     <div class="project">
-                        <h3>Reusable Spark ETL Framework</h3>
+                        <h3>Reusable Spark ETL Framework @ Impresa AI</h3>
                         <p>Designed and built PySpark+Kafka+Mongo framework for energy data transformations, reducing development time by 60% across multiple utility clients. Framework handles real-time streaming with Kafka, as well as data validation, transformations, and MongoDB integration with built-in monitoring and error handling.</p>
-                        <a href="https://www.abjayon.com" class="project-link" target="_blank" rel="noopener noreferrer">Learn More</a>
+                        <a href="https://www.impresa.ai/impresa-meter-data-hub/" class="project-link" target="_blank" rel="noopener noreferrer">Learn More</a>
                     </div>
 
                     <div class="project">
