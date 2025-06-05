@@ -242,8 +242,7 @@ class UI {
                         users and then feeds it into models to relay crucial insights back to them.
                         I've also been heavily involved in performing on site techincal demonstrations to clients, 
                         locking down crucial deals and always being ready to answer the make-it-or-break-it questions that users want to know.
-                        Being a peoples person at my core, I've also spent time teaching others and getting them excited about the topics which I find so fascinating myself; I've helped develop 
-                        scripts for the new member education program at Neurotech@Berkeley, as well as teach fundamental concepts of machine learning and data science as a TA @ The Coding School. 
+                        
                         </p>
                         
                        
@@ -253,10 +252,11 @@ class UI {
                 <div class="text-image-block reverse">
                     <img src="img/turfin.jpg" alt="Me outside work" class="block-image right">
                     <div class="text-content">
-                        <p>When I'm not deep in Spark jobs or debugging an issue in Airflow, I'm probably at a TURF dancing event or working on a design project. 
+                        <p>Being a peoples person at my core, I've also spent time teaching others and getting them excited about the topics which I find so fascinating myself; I've helped develop 
+                        scripts for the new member education program at Neurotech@Berkeley, as well as teach fundamental concepts of machine learning and data science as a TA @ The Coding School. When I'm not deep in Spark jobs or debugging an issue in Airflow, I'm probably at a TURF dancing event or working on a design project. 
                         I'm always exploring the intersection of web design and 3D graphics - like this campfire experience you're currently in.</p>
                         
-                        
+            
                     </div>
                 </div>
             </div>
